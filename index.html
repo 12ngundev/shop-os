@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th" data-theme="dark">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,46 +10,33 @@
     
     <style>
         /* -----------------------------------
-           THEME VARIABLES (Light / Dark Mode)
+           FIXED PASTEL THEME
         ----------------------------------- */
         :root {
-            /* Brand Colors (Dynamic - Can be changed in Admin) */
-            --pk: #ff80b5; 
-            --pk2: #ffb6d9; 
-            --pk3: #e8407a;
+            /* Pastel Palette */
+            --pk: #FF8FAB;       /* Primary Pink */
+            --pk2: #FFC2D1;      /* Light Pink */
+            --pk3: #FB6F92;      /* Accent Pink */
+            
+            --bg-main: #FFF5F7;  /* Very light pink background */
+            --bg-drawer: #FFFFFF;
+            
+            --surface-1: #FFFFFF; /* White cards */
+            --surface-2: #FFF0F3; /* Slightly darker pinkish white for inner panels */
+            
+            --text-primary: #590D22; /* Dark maroon/brown for readability */
+            --text-secondary: #A01A58; /* Muted maroon */
+            
+            --border-color: #FFE5EC; 
+            
+            --shadow-custom: 0 10px 30px rgba(255, 143, 171, 0.15);
+            --shadow-sm: 0 4px 15px rgba(255, 143, 171, 0.1);
+            
+            --modal-overlay: rgba(255, 240, 243, 0.85);
+            --hero-bg: linear-gradient(135deg, #FFE5EC 0%, #FFC2D1 100%);
             
             /* Mac Dots */
             --mac-red: #ff5f56; --mac-yellow: #ffbd2e; --mac-green: #27c93f;
-        }
-
-        /* Dark Theme (Default) */
-        [data-theme="dark"] {
-            --bg-main: #0a0510;
-            --bg-drawer: linear-gradient(180deg, #12091d, #0a0510, #12091d);
-            --surface-1: rgba(0, 0, 0, 0.4);
-            --surface-2: rgba(0, 0, 0, 0.6);
-            --surface-solid: #12091d;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.65);
-            --border-color: rgba(255, 128, 181, 0.25);
-            --shadow-custom: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --modal-overlay: rgba(0, 0, 0, 0.8);
-            --hero-bg: linear-gradient(135deg, #12091d 0%, var(--pk3) 100%);
-        }
-
-        /* Light Theme */
-        [data-theme="light"] {
-            --bg-main: #fdf2f8;
-            --bg-drawer: linear-gradient(180deg, #ffffff, #fdf2f8, #ffffff);
-            --surface-1: #ffffff;
-            --surface-2: #f9fafb;
-            --surface-solid: #ffffff;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --border-color: var(--pk2);
-            --shadow-custom: 0 10px 25px rgba(255, 128, 181, 0.15);
-            --modal-overlay: rgba(255, 255, 255, 0.7);
-            --hero-bg: linear-gradient(135deg, #fce7f3 0%, var(--pk) 100%);
         }
 
         body {
@@ -58,7 +45,6 @@
             font-family: 'Kanit', sans-serif;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         h1, h2, h3, .brand-font { font-family: 'Mitr', sans-serif; }
@@ -74,34 +60,33 @@
         /* Topbar */
         .topbar {
             position: sticky; top: 0; z-index: 100;
-            background: var(--surface-1); backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(255, 143, 171, 0.08);
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 16px; height: 64px;
-            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
         .topbar-left { display: flex; align-items: center; gap: 12px; }
         .ham {
             width: 40px; height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 5px; cursor: pointer; padding: 5px; border-radius: 9999px; border: 1.5px solid var(--pk);
-            background: rgba(255,128,181,0.12); transition: all .3s ease; flex-shrink: 0;
+            gap: 5px; cursor: pointer; padding: 5px; border-radius: 9999px; border: 1.5px solid var(--pk2);
+            background: var(--surface-1); transition: all .3s ease; flex-shrink: 0;
         }
-        .ham span { display: block; width: 18px; height: 2.5px; background: var(--pk); border-radius: 9999px; transition: transform .3s, opacity .3s, width .3s; }
+        .ham span { display: block; width: 18px; height: 2.5px; background: var(--pk3); border-radius: 9999px; transition: transform .3s, opacity .3s, width .3s; }
         .ham.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
         .ham.open span:nth-child(2) { opacity: 0; width: 0; }
         .ham.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-        .topbar-brand { font-family: 'Mitr', sans-serif; font-size: 20px; font-weight: 700; color: var(--text-primary); text-shadow: 0 0 16px rgba(255,128,181,0.4); cursor: pointer; }
+        .topbar-brand { font-family: 'Mitr', sans-serif; font-size: 20px; font-weight: 700; color: var(--pk3); cursor: pointer; }
         .topbar-brand span { color: var(--pk); }
         .topbar-right { display: flex; gap: 8px; align-items: center; }
         
-        .theme-btn {
+        .icon-btn {
             width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            background: var(--surface-2); border: 1px solid var(--border-color); color: var(--text-primary);
-            cursor: pointer; transition: all 0.3s;
+            background: var(--surface-1); border: 1px solid var(--border-color); color: var(--pk3);
+            cursor: pointer; transition: all 0.3s; box-shadow: var(--shadow-sm);
         }
-        .theme-btn:hover { background: rgba(255,128,181,0.1); transform: scale(1.05); }
+        .icon-btn:hover { background: var(--surface-2); transform: scale(1.05); border-color: var(--pk); }
 
         /* Drawer */
         .overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0); pointer-events: none; transition: background .4s ease; }
@@ -109,23 +94,23 @@
         .drawer {
             position: fixed; top: 0; left: 0; z-index: 201; width: 280px; height: 100vh;
             background: var(--bg-drawer); border-right: 1px solid var(--border-color);
-            box-shadow: 10px 0 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center;
-            padding: 40px 0 20px; transform: translateX(-100%); transition: transform .4s cubic-bezier(.4,0,.2,1), background .4s ease; overflow-y: auto;
+            box-shadow: 10px 0 40px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;
+            padding: 40px 0 20px; transform: translateX(-100%); transition: transform .4s cubic-bezier(.4,0,.2,1); overflow-y: auto;
             border-top-right-radius: 32px; border-bottom-right-radius: 32px;
         }
         .drawer.open { transform: translateX(0); }
-        .dr-av { width: 88px; height: 88px; border-radius: 50%; background: linear-gradient(135deg, var(--pk), var(--pk3)); border: 3px solid var(--pk); display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 12px; box-shadow: 0 0 22px rgba(255,128,181,0.5); object-fit: cover;}
-        .dr-name { font-size: 15px; font-weight: 700; color: var(--pk); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px; font-family: 'Mitr', sans-serif;}
+        .dr-av { width: 88px; height: 88px; border-radius: 50%; background: var(--surface-1); border: 3px solid var(--pk2); display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 12px; box-shadow: var(--shadow-sm); object-fit: cover; overflow: hidden;}
+        .dr-name { font-size: 15px; font-weight: 700; color: var(--pk3); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px; font-family: 'Mitr', sans-serif;}
         .dr-nav { width: 100%; padding: 0 16px; }
         
         .dr-item { margin-bottom: 8px; }
-        .dr-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: var(--text-secondary); font-size: 15px; font-weight: 500; cursor: pointer; border-radius: 9999px; transition: all .3s; background: transparent; }
-        .dr-header:hover { color: var(--text-primary); background: rgba(255,128,181,0.1); }
-        .dr-header.active { color: #fff; background: linear-gradient(90deg, var(--pk3), var(--pk)); box-shadow: 0 4px 15px rgba(232,64,122,0.4); }
+        .dr-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: var(--text-primary); font-size: 15px; font-weight: 500; cursor: pointer; border-radius: 16px; transition: all .3s; background: transparent; border: 1px solid transparent;}
+        .dr-header:hover { background: var(--surface-2); border-color: var(--border-color);}
+        .dr-header.active { color: #fff; background: linear-gradient(90deg, var(--pk), var(--pk3)); box-shadow: var(--shadow-sm); border-color: transparent;}
         .dr-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding-left: 20px; }
         .dr-body.open { max-height: 500px; }
         .dr-sub-link { display: block; padding: 10px 20px; color: var(--text-secondary); font-size: 14px; text-decoration: none; border-left: 2px solid var(--border-color); margin-left: 10px; transition: all 0.2s; cursor: pointer; }
-        .dr-sub-link:hover { color: var(--pk); border-left-color: var(--pk); padding-left: 25px; background: rgba(255,128,181,0.05); border-radius: 0 16px 16px 0;}
+        .dr-sub-link:hover { color: var(--pk3); border-left-color: var(--pk3); padding-left: 25px; background: var(--surface-2); border-radius: 0 16px 16px 0;}
 
         /* Page Layout */
         .app-content { max-width: 1024px; margin: 0 auto; position: relative; z-index: 10; min-height: calc(100vh - 64px); display: flex; flex-direction: column;}
@@ -134,57 +119,67 @@
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Hero */
-        .hero { background: var(--hero-bg); padding: 50px 24px 40px; position: relative; min-height: 240px; display: flex; align-items: flex-end; justify-content: space-between; border-radius: 0 0 40px 40px; overflow: hidden; margin-bottom: 24px; box-shadow: var(--shadow-custom);}
-        .hero-title { font-size: 42px; font-weight: 700; line-height: 1.1; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.2); margin-bottom: 8px;}
-        .hero-wave { position: absolute; bottom: -2px; left: 0; right: 0; width: 100%; height: 50px; background: var(--bg-main); border-radius: 100% 100% 0 0 / 100% 100% 0 0; transition: background-color 0.4s ease;}
+        .hero { background: var(--hero-bg); padding: 50px 24px 40px; position: relative; min-height: 220px; display: flex; align-items: flex-end; justify-content: space-between; border-radius: 0 0 40px 40px; overflow: hidden; margin-bottom: 24px; box-shadow: var(--shadow-sm);}
+        .hero-title { font-size: 42px; font-weight: 700; line-height: 1.1; color: var(--text-primary); margin-bottom: 8px;}
+        .hero-wave { position: absolute; bottom: -2px; left: 0; right: 0; width: 100%; height: 40px; background: var(--bg-main); border-radius: 100% 100% 0 0 / 100% 100% 0 0;}
 
         /* Bento Window */
         .bento-window { background: var(--surface-1); border: 1px solid var(--border-color); border-radius: 32px; box-shadow: var(--shadow-custom); overflow: hidden; transition: all 0.4s ease; }
-        .window-header { display: flex; align-items: center; padding: 14px 20px; background: var(--surface-2); border-bottom: 1px solid var(--border-color); }
+        .window-header { display: flex; align-items: center; padding: 14px 20px; background: var(--surface-1); border-bottom: 1px solid var(--border-color); }
         
         /* Buttons & Pills */
-        .btn-earth { background: linear-gradient(135deg, var(--pk), var(--pk3)); color: #ffffff !important; transition: all 0.3s ease; border: none; box-shadow: 0 4px 15px rgba(232,64,122,0.4); border-radius: 9999px; cursor: pointer;}
-        .btn-earth:active, .btn-earth:hover { filter: brightness(1.1); transform: translateY(-2px); }
+        .btn-earth { background: linear-gradient(135deg, var(--pk), var(--pk3)); color: #ffffff !important; transition: all 0.3s ease; border: none; box-shadow: var(--shadow-sm); border-radius: 9999px; cursor: pointer;}
+        .btn-earth:active, .btn-earth:hover { filter: brightness(1.05); transform: translateY(-2px); box-shadow: var(--shadow-custom); }
         
-        .cat-pill { transition: all 0.3s ease; border: 1px solid var(--border-color); background: var(--surface-1); color: var(--text-primary); border-radius: 9999px; padding: 8px 24px;}
-        .cat-pill:hover { background: rgba(255,128,181,0.1); transform: translateY(-2px);}
-        .cat-pill.active { background: linear-gradient(135deg, var(--pk), var(--pk3)); color: #fff; border-color: transparent; box-shadow: 0 4px 12px rgba(232,64,122,0.4);}
+        /* Box Categories */
+        .category-box {
+            background: var(--surface-1); border: 2px solid transparent; border-radius: 20px;
+            padding: 12px; display: flex; flex-direction: column; items-center; justify-center; gap: 8px;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: var(--shadow-sm);
+            width: 85px; height: 85px; flex-shrink: 0;
+        }
+        .category-box:hover { border-color: var(--pk2); transform: translateY(-3px); box-shadow: var(--shadow-custom); }
+        .category-box.active { border-color: var(--pk); background: var(--surface-2); }
         
-        .sub-cat-pill { transition: all 0.2s; background: transparent; border: 1px dashed var(--border-color); color: var(--text-secondary); border-radius: 9999px; padding: 6px 16px; font-size: 13px;}
-        .sub-cat-pill.active { background: rgba(255,128,181,0.15); border-style: solid; border-color: var(--pk); color: var(--pk); font-weight: bold;}
+        .sub-cat-pill { transition: all 0.2s; background: var(--surface-1); border: 1px dashed var(--pk2); color: var(--text-secondary); border-radius: 9999px; padding: 6px 16px; font-size: 13px;}
+        .sub-cat-pill.active { background: var(--pk2); border-style: solid; border-color: var(--pk); color: var(--text-primary); font-weight: bold;}
 
         /* Inputs */
         input, select, textarea {
-            background-color: var(--surface-2) !important; color: var(--text-primary) !important;
+            background-color: var(--surface-1) !important; color: var(--text-primary) !important;
             border: 1px solid var(--border-color) !important; border-radius: 12px !important;
             padding-left: 20px !important; padding-right: 20px !important; transition: all 0.3s;
         }
         input:not([type="checkbox"]), select { border-radius: 9999px !important; }
         textarea { border-radius: 24px !important; padding: 16px 20px !important; }
-        input:focus, textarea:focus, select:focus { border-color: var(--pk) !important; box-shadow: 0 0 0 4px rgba(255,128,181,0.15) !important; outline: none; }
+        input:focus, textarea:focus, select:focus { border-color: var(--pk) !important; box-shadow: 0 0 0 4px rgba(255,143,171,0.15) !important; outline: none; }
         
         /* Modals */
         .modal-overlay { visibility: hidden; opacity: 0; pointer-events: none; transition: opacity 0.4s ease, visibility 0.4s ease; background: var(--modal-overlay); backdrop-filter: blur(8px); }
         .modal-overlay.open { visibility: visible; opacity: 1; pointer-events: auto; z-index: 9999; }
-        .modal-content { transform: scale(0.9) translateY(30px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 36px; border: 1px solid var(--border-color); background: var(--surface-1);}
+        .modal-content { transform: scale(0.9) translateY(30px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 36px; border: 1px solid var(--border-color); background: var(--surface-1); box-shadow: var(--shadow-custom);}
         .modal-overlay.open .modal-content { transform: scale(1) translateY(0); opacity: 1; }
 
         /* Admin Specific */
-        .admin-tab { padding: 10px 16px; border-radius: 9999px; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s; white-space: nowrap; color: var(--text-secondary); border: 1px solid transparent; }
-        .admin-tab.active { background: var(--pk); color: white; border-color: var(--pk); }
-        .admin-tab:hover:not(.active) { background: var(--surface-2); border-color: var(--border-color); }
+        .admin-tab { padding: 10px 16px; border-radius: 9999px; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s; white-space: nowrap; color: var(--text-secondary); border: 1px solid transparent; background: var(--surface-1); }
+        .admin-tab.active { background: var(--pk); color: white; border-color: var(--pk); box-shadow: var(--shadow-sm);}
+        .admin-tab:hover:not(.active) { border-color: var(--pk2); }
         .admin-module { display: none; animation: fadeIn 0.3s ease; }
         .admin-module.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         table { width: 100%; text-align: left; border-collapse: collapse; }
         th, td { padding: 12px; border-bottom: 1px solid var(--border-color); font-size: 14px; }
-        th { color: var(--pk); font-weight: bold; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
-        tr:hover { background: rgba(255,128,181,0.05); }
+        th { color: var(--pk3); font-weight: bold; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; background: var(--surface-2); }
+        tr:hover { background: var(--surface-2); }
 
         /* Image Gallery Snap */
         .snap-x-mandatory { scroll-snap-type: x mandatory; }
         .snap-center { scroll-snap-align: center; }
+
+        /* Custom Auth Tabs */
+        .auth-tab { flex: 1; text-align: center; padding: 12px; font-weight: bold; color: var(--text-secondary); border-bottom: 3px solid transparent; cursor: pointer; transition: all 0.3s; }
+        .auth-tab.active { color: var(--pk3); border-bottom-color: var(--pk3); }
 
     </style>
 </head>
@@ -192,8 +187,8 @@
 
     <!-- Floating SVGs -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
-        <svg class="absolute top-[10%] left-[5%] w-10 h-10 float-1 text-[var(--pk3)] opacity-30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 9 9.5 11 12 11C14.5 11 16.5 9 16.5 6.5C16.5 4 14.5 2 12 2ZM12 22C14.5 22 16.5 20 16.5 17.5C16.5 15 14.5 13 12 13C9.5 13 7.5 15 7.5 17.5C7.5 20 9.5 22 12 22ZM2 12C2 9.5 4 7.5 6.5 7.5C9 7.5 11 9.5 11 12C11 14.5 9 16.5 6.5 16.5C4 16.5 2 14.5 2 12ZM22 12C22 14.5 20 16.5 17.5 16.5C15 16.5 13 14.5 13 12C13 9.5 15 7.5 17.5 7.5C20 7.5 22 9.5 22 12Z"/></svg>
-        <svg class="absolute top-[25%] right-[8%] w-12 h-12 twinkle text-[var(--pk)] opacity-30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+        <svg class="absolute top-[10%] left-[5%] w-10 h-10 float-1 text-[var(--pk)] opacity-40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 9 9.5 11 12 11C14.5 11 16.5 9 16.5 6.5C16.5 4 14.5 2 12 2ZM12 22C14.5 22 16.5 20 16.5 17.5C16.5 15 14.5 13 12 13C9.5 13 7.5 15 7.5 17.5C7.5 20 9.5 22 12 22ZM2 12C2 9.5 4 7.5 6.5 7.5C9 7.5 11 9.5 11 12C11 14.5 9 16.5 6.5 16.5C4 16.5 2 14.5 2 12ZM22 12C22 14.5 20 16.5 17.5 16.5C15 16.5 13 14.5 13 12C13 9.5 15 7.5 17.5 7.5C20 7.5 22 9.5 22 12Z"/></svg>
+        <svg class="absolute top-[25%] right-[8%] w-12 h-12 twinkle text-[var(--pk2)] opacity-50" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
     </div>
 
     <!-- Topbar -->
@@ -203,10 +198,9 @@
             <span class="topbar-brand" onclick="nav('home')" id="ui-store-name-header">Store</span>
         </div>
         <div class="topbar-right">
-            <button onclick="toggleTheme()" class="theme-btn" id="theme-icon-btn" title="สลับธีม">🌙</button>
-            <button onclick="nav('cart')" class="theme-btn relative">
+            <button onclick="nav('cart')" class="icon-btn relative">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                <span id="header-cart-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center hidden border-2 border-[var(--surface-1)] font-bold shadow-md">0</span>
+                <span id="header-cart-badge" class="absolute -top-1 -right-1 bg-[#ff5f56] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center hidden border-2 border-white font-bold shadow-sm">0</span>
             </button>
         </div>
     </div>
@@ -214,7 +208,7 @@
     <!-- Drawer -->
     <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
     <div class="drawer" id="drawer">
-        <div class="dr-av overflow-hidden" id="drawer-avatar">🌸</div>
+        <div class="dr-av" id="drawer-avatar">🌸</div>
         <div class="dr-name">Menu</div>
         <nav class="dr-nav" id="drawer-nav-container"></nav>
     </div>
@@ -225,27 +219,29 @@
         <!-- HOME PAGE -->
         <main id="page-home" class="page-section active">
             <div class="hero">
-                <div class="relative z-10 w-full">
-                    <div class="inline-block bg-[rgba(0,0,0,0.3)] backdrop-blur-md border border-white/20 padding px-4 py-1.5 rounded-full text-xs font-bold text-white mb-4">🛍️ Welcome</div>
+                <div class="relative z-10 w-full text-center pb-4">
                     <div class="hero-title" id="ui-store-name-hero">Store</div>
-                    <div class="text-[15px] text-white/90" id="ui-store-desc-hero">Description</div>
+                    <div class="text-sm font-medium text-[var(--text-secondary)]" id="ui-store-desc-hero">Description</div>
                 </div>
                 <div class="hero-wave"></div>
             </div>
 
             <div class="px-4 md:px-8 max-w-5xl mx-auto w-full">
-                <!-- Main Categories -->
-                <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 mb-2" id="ui-main-categories"></div>
+                <!-- Main Categories (Box Style) -->
+                <div class="flex flex-wrap md:justify-center gap-3 pb-2 mb-4" id="ui-main-categories"></div>
+                
                 <!-- Sub Categories -->
-                <div id="ui-sub-categories-container" class="hidden mb-6 bg-[var(--surface-1)] p-3 rounded-2xl border border-[var(--border-color)]">
-                    <div class="text-[10px] uppercase font-bold text-[var(--pk)] mb-2 px-2">หมวดหมู่ย่อย</div>
-                    <div class="flex gap-2 overflow-x-auto no-scrollbar" id="ui-sub-categories"></div>
+                <div id="ui-sub-categories-container" class="hidden mb-6 bg-[var(--surface-1)] p-4 rounded-3xl border border-[var(--border-color)] shadow-sm">
+                    <div class="text-[10px] uppercase font-bold text-[var(--text-secondary)] mb-3 px-2">เลือกหมวดหมู่ย่อย</div>
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1" id="ui-sub-categories"></div>
                 </div>
+                
                 <!-- Empty State -->
-                <div id="ui-folder-empty-state" class="hidden text-center py-20 bg-[var(--surface-1)] rounded-[32px] border border-[var(--border-color)] mb-8">
+                <div id="ui-folder-empty-state" class="hidden text-center py-20 bg-[var(--surface-1)] rounded-[32px] border border-[var(--border-color)] mb-8 shadow-sm">
                     <div class="text-6xl mb-4 opacity-50">📂</div>
-                    <h3 class="text-lg font-bold text-[var(--text-primary)] mb-2 brand-font">เลือกหมวดหมู่ย่อยด้านบน</h3>
+                    <h3 class="text-lg font-bold text-[var(--text-secondary)] mb-2 brand-font">เลือกหมวดหมู่ย่อยด้านบน</h3>
                 </div>
+                
                 <!-- Products -->
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="ui-products"></div>
             </div>
@@ -255,19 +251,19 @@
         <main id="page-cart" class="page-section px-4 pt-6 md:px-8">
             <div class="max-w-3xl mx-auto">
                 <div class="flex items-center gap-4 mb-8">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--pk)] to-[var(--pk3)] flex items-center justify-center text-2xl text-white shadow-md">🧺</div>
+                    <div class="w-12 h-12 rounded-full bg-[var(--surface-1)] flex items-center justify-center text-2xl shadow-sm border border-[var(--border-color)]">🧺</div>
                     <h2 class="text-3xl font-bold brand-font text-[var(--text-primary)]">ตะกร้าสินค้า</h2>
                 </div>
                 <div class="bento-window mb-6">
                     <div class="window-header"><span class="text-xs font-bold text-[var(--text-secondary)] tracking-widest uppercase">My Cart</span></div>
-                    <div class="p-5 md:p-8 space-y-4" id="cart-items"></div>
+                    <div class="p-4 md:p-6 space-y-4 bg-[var(--surface-2)]" id="cart-items"></div>
                 </div>
                 <div class="bento-window p-6 md:p-8" id="cart-summary-box" style="display:none;">
                     <div class="flex justify-between items-center mb-6 pb-5 border-b border-[var(--border-color)]">
                         <span class="text-lg text-[var(--text-secondary)] font-medium">ยอดรวมทั้งหมด</span>
-                        <span class="font-bold text-4xl text-[var(--pk)] font-mono" id="cart-total">0 ฿</span>
+                        <span class="font-bold text-4xl text-[var(--pk3)] font-mono" id="cart-total">0 ฿</span>
                     </div>
-                    <button onclick="checkout()" class="w-full btn-earth py-4 rounded-full text-xl font-bold transition">ดำเนินการชำระเงิน</button>
+                    <button onclick="checkout()" class="w-full btn-earth py-4 rounded-full text-xl font-bold transition shadow-md">ดำเนินการชำระเงิน</button>
                 </div>
             </div>
         </main>
@@ -276,67 +272,115 @@
         <main id="page-checkout" class="page-section px-4 pt-6 md:px-8">
             <div class="max-w-xl mx-auto">
                 <div class="flex items-center gap-4 mb-8">
-                    <button onclick="nav('cart')" class="w-10 h-10 bg-[var(--surface-1)] border border-[var(--border-color)] rounded-full flex items-center justify-center text-[var(--text-primary)] hover:bg-[rgba(255,128,181,0.1)]"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+                    <button onclick="nav('cart')" class="w-10 h-10 bg-[var(--surface-1)] border border-[var(--border-color)] rounded-full flex items-center justify-center text-[var(--text-primary)] hover:bg-[var(--surface-2)] transition shadow-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                     <div><h2 class="font-bold text-2xl brand-font text-[var(--text-primary)]">ชำระเงิน</h2></div>
                 </div>
-                <div class="bento-window p-8 text-center mb-6 border-[var(--pk)] bg-[rgba(255,128,181,0.05)]">
+                
+                <div class="bento-window p-8 text-center mb-6 border-[var(--pk2)] bg-[var(--surface-1)]">
                     <p class="text-sm text-[var(--text-secondary)] mb-2 font-medium uppercase tracking-widest">ยอดที่ต้องชำระ</p>
-                    <div class="text-5xl font-bold text-[var(--pk)] font-mono" id="pay-amount">0 ฿</div>
-                </div>
-                <div id="payment-method-tabs" class="flex gap-2 mb-6 bg-[var(--surface-2)] p-1.5 rounded-full border border-[var(--border-color)]">
-                    <button id="tab-pay-bank" onclick="switchPayMethod('bank')" class="flex-1 py-3 rounded-full font-bold text-sm bg-[var(--pk)] text-white shadow-sm transition">🏦 โอนเงิน/สแกน QR</button>
-                    <button id="tab-pay-credit" onclick="switchPayMethod('credit')" class="flex-1 py-3 rounded-full font-bold text-sm text-[var(--text-secondary)] transition">🌸 ชำระด้วยเครดิต</button>
+                    <div class="text-5xl font-bold text-[var(--pk3)] font-mono" id="pay-amount">0 ฿</div>
                 </div>
 
-                <!-- Credit -->
+                <!-- 3 Payment Methods Tabs -->
+                <div id="payment-method-tabs" class="flex gap-2 mb-6 bg-[var(--surface-1)] p-1.5 rounded-[20px] border border-[var(--border-color)] shadow-sm overflow-x-auto no-scrollbar">
+                    <button id="tab-pay-credit" onclick="switchPayMethod('credit')" class="flex-1 min-w-[100px] py-3 rounded-[14px] font-bold text-xs bg-[var(--pk)] text-white shadow-sm transition">🌸 เครดิต</button>
+                    <button id="tab-pay-autoqr" onclick="switchPayMethod('autoqr')" class="flex-1 min-w-[100px] py-3 rounded-[14px] font-bold text-xs text-[var(--text-secondary)] transition hover:bg-[var(--surface-2)]">📱 QR ล็อกยอด</button>
+                    <button id="tab-pay-manual" onclick="switchPayMethod('manual')" class="flex-1 min-w-[110px] py-3 rounded-[14px] font-bold text-xs text-[var(--text-secondary)] transition hover:bg-[var(--surface-2)]">🏦 โอนเงิน/QR ทั่วไป</button>
+                </div>
+
+                <!-- Method 1: Credit -->
                 <div id="checkout-method-credit" class="bento-window p-8 mb-6 hidden text-center">
                     <h3 class="font-bold text-xl mb-4 brand-font text-[var(--text-primary)]">เครดิตบัญชีของคุณ</h3>
                     <div class="bg-[var(--surface-2)] border border-[var(--border-color)] p-6 rounded-3xl mb-6 inline-block min-w-[240px]">
                         <p class="text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-widest">ยอดคงเหลือปัจจุบัน</p>
-                        <p class="text-4xl font-mono font-bold text-[var(--pk)]" id="checkout-credit-balance">0 ฿</p>
+                        <p class="text-4xl font-mono font-bold text-[var(--pk3)]" id="checkout-credit-balance">0 ฿</p>
                     </div>
-                    <div id="checkout-credit-error" class="hidden bg-red-100 text-red-500 border border-red-200 p-4 rounded-2xl text-sm font-bold mb-6">เครดิตไม่เพียงพอ</div>
+                    <div id="checkout-credit-error" class="hidden bg-red-50 text-red-500 border border-red-200 p-4 rounded-2xl text-sm font-bold mb-6">เครดิตไม่เพียงพอ กรุณาเลือกวิธีอื่นหรือเติมเครดิต</div>
                     <button id="btn-confirm-credit" onclick="processCreditPayment()" class="w-full btn-earth py-4 rounded-full font-bold text-lg transition">ยืนยันชำระเงินด้วยเครดิต</button>
                 </div>
 
-                <!-- Bank / QR -->
-                <div id="checkout-method-bank" class="block">
-                    <div id="checkout-qr-container" class="bento-window p-8 text-center mb-6">
-                        <h3 class="font-bold text-xl mb-1 text-[var(--text-primary)] brand-font" id="checkout-acc-name">ชื่อบัญชี</h3>
-                        <p class="text-xs text-[var(--pk)] uppercase tracking-widest mb-4 font-bold" id="checkout-acc-bank">BANK</p>
+                <!-- Method 2: Auto QR (PromptPay) -->
+                <div id="checkout-method-autoqr" class="hidden">
+                    <div class="bento-window p-8 text-center mb-6">
+                        <h3 class="font-bold text-lg mb-1 text-[var(--text-primary)] brand-font">แสกนเพื่อชำระเงิน (พร้อมเพย์)</h3>
+                        <p class="text-xs text-[var(--text-secondary)] mb-6">ยอดเงินจะถูกตั้งค่าอัตโนมัติ กรุณาตรวจสอบก่อนยืนยัน</p>
                         
-                        <div class="bg-white p-4 rounded-3xl inline-block mx-auto mb-4 shadow-md border border-gray-200">
-                            <img id="checkout-qr-img" src="" class="w-48 h-48 object-contain rounded-xl" alt="QR Code">
+                        <div class="bg-white p-4 rounded-3xl inline-block mx-auto mb-4 shadow-sm border border-[var(--border-color)]">
+                            <!-- Image source generated via JS -->
+                            <img id="checkout-auto-qr-img" src="" class="w-48 h-48 object-contain rounded-xl" alt="Auto QR Code">
+                        </div>
+                    </div>
+
+                    <div class="bento-window p-6 mb-8 bg-[var(--surface-2)] border-dashed border-2 hover:border-[var(--pk)] transition">
+                        <h3 class="font-bold text-sm mb-4 text-[var(--pk3)] text-center uppercase">แนบสลิปโอนเงิน</h3>
+                        <div class="bg-[var(--surface-1)] rounded-2xl p-6 text-center cursor-pointer border border-[var(--border-color)] shadow-sm" onclick="document.getElementById('slip-upload-auto').click()">
+                            <input type="file" id="slip-upload-auto" accept="image/*" onchange="previewSlip(this, 'auto')" class="hidden">
+                            <div id="slip-placeholder-auto"><p class="text-sm font-bold text-[var(--text-secondary)]">คลิกเพื่ออัปโหลดรูปสลิป</p></div>
+                            <div id="slip-preview-container-auto" class="hidden"><img id="slip-img-preview-auto" src="" class="max-h-48 mx-auto rounded-xl"></div>
+                        </div>
+                    </div>
+                    <button onclick="confirmSlip('auto')" class="w-full btn-earth py-4 rounded-full font-bold text-lg mb-10 transition">แจ้งชำระเงิน</button>
+                </div>
+
+                <!-- Method 3: Manual Transfer / Custom QR -->
+                <div id="checkout-method-manual" class="hidden">
+                    <div class="bento-window p-8 text-center mb-6">
+                        <h3 class="font-bold text-xl mb-1 text-[var(--text-primary)] brand-font" id="checkout-acc-name">ชื่อบัญชี</h3>
+                        <p class="text-xs text-[var(--pk3)] uppercase tracking-widest mb-4 font-bold" id="checkout-acc-bank">BANK</p>
+                        
+                        <!-- Custom QR if available -->
+                        <div id="custom-qr-wrapper" class="bg-white p-4 rounded-3xl inline-block mx-auto mb-4 shadow-sm border border-[var(--border-color)] hidden">
+                            <img id="checkout-manual-qr-img" src="" class="w-48 h-48 object-contain rounded-xl" alt="Custom QR Code">
                         </div>
                         
                         <p class="text-2xl font-mono font-bold text-[var(--text-primary)] mb-4" id="checkout-acc-no">000-0-00000-0</p>
-                        <button onclick="copyAccNo()" class="text-sm bg-[var(--surface-2)] border border-[var(--border-color)] px-6 py-2.5 rounded-full font-bold text-[var(--text-primary)] hover:border-[var(--pk)] transition">📋 คัดลอกเลขบัญชี</button>
+                        <button onclick="copyAccNo()" class="text-sm bg-[var(--surface-1)] border border-[var(--pk2)] px-6 py-2.5 rounded-full font-bold text-[var(--text-primary)] hover:bg-[var(--surface-2)] transition shadow-sm">📋 คัดลอกเลขบัญชี</button>
                     </div>
 
-                    <div class="bento-window p-8 mb-8 bg-[var(--surface-2)] border-dashed border-2 hover:border-[var(--pk)] transition">
-                        <h3 class="font-bold text-sm mb-4 text-[var(--pk)] text-center uppercase">แนบสลิปโอนเงิน</h3>
-                        <div class="bg-[var(--surface-1)] rounded-2xl p-6 text-center cursor-pointer border border-[var(--border-color)]" onclick="document.getElementById('slip-upload').click()">
-                            <input type="file" id="slip-upload" accept="image/*" onchange="previewSlip(this)" class="hidden">
-                            <div id="slip-placeholder"><p class="text-sm font-bold text-[var(--text-secondary)]">คลิกเพื่ออัปโหลดรูปสลิป</p></div>
-                            <div id="slip-preview-container" class="hidden"><img id="slip-img-preview" src="" class="max-h-48 mx-auto rounded-xl"></div>
+                    <div class="bento-window p-6 mb-8 bg-[var(--surface-2)] border-dashed border-2 hover:border-[var(--pk)] transition">
+                        <h3 class="font-bold text-sm mb-4 text-[var(--pk3)] text-center uppercase">แนบสลิปโอนเงิน</h3>
+                        <div class="bg-[var(--surface-1)] rounded-2xl p-6 text-center cursor-pointer border border-[var(--border-color)] shadow-sm" onclick="document.getElementById('slip-upload-manual').click()">
+                            <input type="file" id="slip-upload-manual" accept="image/*" onchange="previewSlip(this, 'manual')" class="hidden">
+                            <div id="slip-placeholder-manual"><p class="text-sm font-bold text-[var(--text-secondary)]">คลิกเพื่ออัปโหลดรูปสลิป</p></div>
+                            <div id="slip-preview-container-manual" class="hidden"><img id="slip-img-preview-manual" src="" class="max-h-48 mx-auto rounded-xl"></div>
                         </div>
                     </div>
-                    <button onclick="confirmSlip()" class="w-full btn-earth py-4 rounded-full font-bold text-lg mb-10 transition">แจ้งชำระเงิน</button>
+                    <button onclick="confirmSlip('manual')" class="w-full btn-earth py-4 rounded-full font-bold text-lg mb-10 transition">แจ้งชำระเงิน</button>
                 </div>
+
             </div>
         </main>
 
         <!-- AUTH / PROFILE / ADMIN -->
         <main id="page-auth" class="page-section px-4 pt-6 md:px-8">
-            <!-- Login -->
+            
+            <!-- Login Options -->
             <div id="view-login" class="hidden max-w-md mx-auto py-10">
                 <div class="text-center mb-8"><h2 class="text-3xl font-bold brand-font text-[var(--text-primary)]">เข้าสู่ระบบ</h2></div>
-                <div class="bento-window p-6 md:p-8">
-                    <form id="form-login" onsubmit="event.preventDefault(); handleLogin();" class="space-y-4">
-                        <input type="text" id="login-id" required placeholder="ชื่อผู้ใช้ (admin หรือ user1)" class="w-full py-4">
-                        <input type="password" id="login-pass" required placeholder="รหัสผ่าน (admin หรือ 123)" class="w-full py-4">
-                        <button type="submit" class="w-full btn-earth py-4 font-bold text-lg mt-2">ล็อกอิน</button>
-                    </form>
+                
+                <div class="bento-window overflow-hidden">
+                    <div class="flex border-b border-[var(--border-color)] bg-[var(--surface-2)]">
+                        <div class="auth-tab active" id="tab-login-cust" onclick="switchLoginTab('cust')">สำหรับลูกค้า</div>
+                        <div class="auth-tab" id="tab-login-admin" onclick="switchLoginTab('admin')">สำหรับแอดมิน</div>
+                    </div>
+                    
+                    <div class="p-6 md:p-8">
+                        <!-- Customer Login -->
+                        <div id="login-cust-box">
+                            <button onclick="mockGoogleLogin()" class="w-full flex items-center justify-center gap-3 bg-white border border-gray-200 py-3.5 rounded-full text-gray-700 font-bold shadow-sm hover:bg-gray-50 transition mb-4">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                                เข้าสู่ระบบด้วย Google
+                            </button>
+                            <p class="text-xs text-center text-[var(--text-secondary)] mt-4">*ระบบจำลอง: กดเพื่อเข้าสู่ระบบเป็นลูกค้า (user1)</p>
+                        </div>
+                        
+                        <!-- Admin Login -->
+                        <form id="login-admin-box" class="hidden space-y-4" onsubmit="event.preventDefault(); handleLogin();">
+                            <input type="text" id="login-id" required placeholder="ชื่อผู้ใช้ (admin)" class="w-full py-4 shadow-sm">
+                            <input type="password" id="login-pass" required placeholder="รหัสผ่าน (admin)" class="w-full py-4 shadow-sm">
+                            <button type="submit" class="w-full btn-earth py-4 font-bold text-lg mt-2">ล็อกอินแอดมิน</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -344,15 +388,19 @@
             <div id="view-dashboard" class="hidden max-w-2xl mx-auto">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold brand-font text-[var(--text-primary)]">โปรไฟล์ของฉัน</h2>
-                    <button onclick="logout()" class="text-xs bg-red-100 text-red-500 px-4 py-2 rounded-full font-bold">ออกจากระบบ</button>
+                    <button onclick="logout()" class="text-xs bg-white border border-[var(--border-color)] text-[var(--text-primary)] px-4 py-2 rounded-full font-bold shadow-sm hover:bg-[var(--surface-2)]">ออกจากระบบ</button>
                 </div>
-                <div class="bento-window p-6 mb-6 flex justify-between items-center">
-                    <div>
-                        <h3 class="font-bold text-xl text-[var(--text-primary)] brand-font" id="profile-name">Name</h3>
+                <div class="bento-window p-6 mb-6 flex justify-between items-center bg-white">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-[var(--surface-2)] border-2 border-[var(--pk2)] flex items-center justify-center text-2xl">👤</div>
+                        <div>
+                            <h3 class="font-bold text-xl text-[var(--text-primary)] brand-font" id="profile-name">Name</h3>
+                            <p class="text-[10px] text-[var(--text-secondary)] bg-[var(--surface-2)] px-2 py-0.5 rounded inline-block mt-1">Customer</p>
+                        </div>
                     </div>
                     <div class="text-right">
-                        <p class="text-xs text-[var(--text-secondary)] uppercase tracking-wide">เครดิต</p>
-                        <p class="text-2xl font-mono font-bold text-[var(--pk)]" id="profile-credit">0 ฿</p>
+                        <p class="text-xs text-[var(--text-secondary)] uppercase tracking-wide">เครดิตสะสม</p>
+                        <p class="text-2xl font-mono font-bold text-[var(--pk3)]" id="profile-credit">0 ฿</p>
                     </div>
                 </div>
                 <div class="bento-window p-6">
@@ -364,12 +412,12 @@
             <!-- Admin Panel (Full Feature) -->
             <div id="view-admin" class="hidden max-w-5xl mx-auto">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-2xl font-bold brand-font text-[var(--pk)]">ระบบจัดการร้านค้า</h2>
-                    <button onclick="logout()" class="text-xs bg-red-100 text-red-500 px-4 py-2 rounded-full font-bold">ออกจากระบบ</button>
+                    <h2 class="text-2xl font-bold brand-font text-[var(--pk3)]">ระบบจัดการร้านค้า</h2>
+                    <button onclick="logout()" class="text-xs bg-white border border-[var(--border-color)] text-[var(--text-primary)] px-4 py-2 rounded-full font-bold shadow-sm hover:bg-[var(--surface-2)]">ออกจากระบบ</button>
                 </div>
 
                 <!-- Admin Navigation -->
-                <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2 mb-6 border-b border-[var(--border-color)]">
+                <div class="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-6 border-b border-[var(--border-color)]">
                     <button onclick="switchAdminTab('stats')" id="tab-stats" class="admin-tab active">📊 สถิติ</button>
                     <button onclick="switchAdminTab('orders')" id="tab-orders" class="admin-tab">🛍️ ออเดอร์</button>
                     <button onclick="switchAdminTab('products')" id="tab-products" class="admin-tab">📦 สินค้า</button>
@@ -384,7 +432,7 @@
                     <div class="grid grid-cols-2 gap-4 mb-6">
                         <div class="bento-window p-6 text-center">
                             <p class="text-xs text-[var(--text-secondary)] uppercase tracking-widest mb-2">ยอดขายรวม (สำเร็จ)</p>
-                            <p class="text-3xl font-bold text-[var(--pk)] font-mono" id="stat-revenue">0 ฿</p>
+                            <p class="text-3xl font-bold text-[var(--pk3)] font-mono" id="stat-revenue">0 ฿</p>
                         </div>
                         <div class="bento-window p-6 text-center">
                             <p class="text-xs text-[var(--text-secondary)] uppercase tracking-widest mb-2">ออเดอร์ทั้งหมด</p>
@@ -402,7 +450,7 @@
                     <div class="bento-window p-0 overflow-hidden">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left whitespace-nowrap">
-                                <thead class="bg-[var(--surface-2)]"><tr><th>รหัส</th><th>ผู้ใช้</th><th>ยอด</th><th>วิธีชำระ</th><th>วันที่</th><th>สถานะ</th><th>จัดการ</th></tr></thead>
+                                <thead><tr><th>รหัส</th><th>ผู้ใช้</th><th>ยอด</th><th>วิธีชำระ</th><th>วันที่</th><th>สถานะ</th><th>จัดการ</th></tr></thead>
                                 <tbody id="admin-orders-table"></tbody>
                             </table>
                         </div>
@@ -412,40 +460,40 @@
                 <!-- Mod: Products -->
                 <div id="admin-mod-products" class="admin-module">
                     <div class="bento-window p-6 mb-6">
-                        <h3 class="font-bold text-[var(--pk)] mb-4">เพิ่ม/แก้ไข สินค้า</h3>
+                        <h3 class="font-bold text-[var(--pk3)] mb-4">เพิ่ม/แก้ไข สินค้า</h3>
                         <form id="form-product" onsubmit="event.preventDefault(); saveProduct();" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input type="hidden" id="prod-id">
-                            <div><label class="text-xs text-[var(--text-secondary)]">ชื่อสินค้า</label><input type="text" id="prod-name" required class="w-full py-2"></div>
-                            <div><label class="text-xs text-[var(--text-secondary)]">ราคา (บาท)</label><input type="number" id="prod-price" required class="w-full py-2"></div>
+                            <div><label class="text-xs text-[var(--text-secondary)] pl-2">ชื่อสินค้า</label><input type="text" id="prod-name" required class="w-full py-2 shadow-sm"></div>
+                            <div><label class="text-xs text-[var(--text-secondary)] pl-2">ราคา (บาท)</label><input type="number" id="prod-price" required class="w-full py-2 shadow-sm"></div>
                             <div>
-                                <label class="text-xs text-[var(--text-secondary)]">หมวดหมู่หลัก</label>
-                                <select id="prod-cat" required class="w-full py-2" onchange="updateSubCatOptions()"></select>
+                                <label class="text-xs text-[var(--text-secondary)] pl-2">หมวดหมู่หลัก</label>
+                                <select id="prod-cat" required class="w-full py-2 shadow-sm" onchange="updateSubCatOptions()"></select>
                             </div>
                             <div>
-                                <label class="text-xs text-[var(--text-secondary)]">หมวดหมู่ย่อย (ถ้ามี)</label>
-                                <select id="prod-subcat" class="w-full py-2"><option value="">ไม่มี</option></select>
+                                <label class="text-xs text-[var(--text-secondary)] pl-2">หมวดหมู่ย่อย (ถ้ามี)</label>
+                                <select id="prod-subcat" class="w-full py-2 shadow-sm"><option value="">ไม่มี</option></select>
                             </div>
                             
                             <!-- Multi Image Section -->
                             <div class="md:col-span-2">
-                                <label class="text-xs text-[var(--text-secondary)] mb-2 block">รูปภาพสินค้า (อัปโหลด หรือ วางลิ้งค์/Emoji)</label>
-                                <textarea id="prod-img-list" rows="3" class="w-full py-2 text-sm leading-relaxed" placeholder="ลิ้งค์รูปภาพ บรรทัดละ 1 รูป หรือพิมพ์ Emoji (เช่น 🐻)"></textarea>
-                                <div class="mt-2 flex gap-2 items-center">
+                                <label class="text-xs text-[var(--text-secondary)] mb-2 pl-2 block">รูปภาพสินค้า (อัปโหลด หรือ วางลิ้งค์/Emoji)</label>
+                                <textarea id="prod-img-list" rows="3" class="w-full py-2 text-sm leading-relaxed shadow-sm" placeholder="ลิ้งค์รูปภาพ บรรทัดละ 1 รูป หรือพิมพ์ Emoji (เช่น 🐻)"></textarea>
+                                <div class="mt-2 flex gap-2 items-center pl-2">
                                     <input type="file" id="prod-img-upload" multiple accept="image/*" class="hidden" onchange="handleProductImageUpload(event)">
-                                    <button type="button" onclick="document.getElementById('prod-img-upload').click()" class="text-xs bg-[var(--pk)] text-white px-4 py-2 rounded-full font-bold">🖼️ แนบรูปจากเครื่อง</button>
-                                    <span class="text-[10px] text-[var(--text-secondary)]">* รูปที่แนบจะถูกแปลงเป็นโค้ดและใส่ในช่องอัตโนมัติ</span>
+                                    <button type="button" onclick="document.getElementById('prod-img-upload').click()" class="text-xs bg-[var(--surface-1)] border border-[var(--pk2)] text-[var(--text-primary)] px-4 py-2 rounded-full font-bold shadow-sm hover:bg-[var(--surface-2)]">🖼️ แนบรูปจากเครื่อง</button>
+                                    <span class="text-[10px] text-[var(--text-secondary)]">* รูปที่แนบจะแปลงเป็นโค้ดอัตโนมัติ</span>
                                 </div>
                             </div>
 
-                            <div class="md:col-span-2 flex gap-2">
-                                <button type="submit" class="bg-[var(--pk)] text-white px-6 py-2 rounded-full font-bold">บันทึกสินค้า</button>
-                                <button type="button" onclick="resetProdForm()" class="bg-[var(--surface-2)] border border-[var(--border-color)] px-6 py-2 rounded-full">ล้างแบบฟอร์ม</button>
+                            <div class="md:col-span-2 flex gap-2 mt-2">
+                                <button type="submit" class="bg-[var(--pk)] text-white px-6 py-2.5 rounded-full font-bold shadow-sm hover:bg-[var(--pk3)] transition">บันทึกสินค้า</button>
+                                <button type="button" onclick="resetProdForm()" class="bg-[var(--surface-1)] border border-[var(--border-color)] px-6 py-2.5 rounded-full shadow-sm hover:bg-[var(--surface-2)]">ล้างฟอร์ม</button>
                             </div>
                         </form>
                     </div>
                     <div class="bento-window p-0 overflow-x-auto">
                         <table class="w-full">
-                            <thead class="bg-[var(--surface-2)]"><tr><th>รูป</th><th>ชื่อ</th><th>หมวดหมู่</th><th>ราคา</th><th>จัดการ</th></tr></thead>
+                            <thead><tr><th>รูป</th><th>ชื่อ</th><th>หมวดหมู่</th><th>ราคา</th><th>จัดการ</th></tr></thead>
                             <tbody id="admin-products-table"></tbody>
                         </table>
                     </div>
@@ -454,63 +502,58 @@
                 <!-- Mod: Promotions -->
                 <div id="admin-mod-promos" class="admin-module">
                     <div class="bento-window p-6 mb-6">
-                        <h3 class="font-bold text-[var(--pk)] mb-4">ตั้งค่าโปรโมชั่น</h3>
+                        <h3 class="font-bold text-[var(--pk3)] mb-4">ตั้งค่าโปรโมชั่น</h3>
                         <form id="form-promo" onsubmit="event.preventDefault(); savePromo();" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input type="hidden" id="promo-id">
-                            <div><label class="text-xs text-[var(--text-secondary)]">ชื่อโปรโมชั่น</label><input type="text" id="promo-name" required class="w-full py-2"></div>
-                            <div><label class="text-xs text-[var(--text-secondary)]">รูปภาพโปรโมชั่น (URL/Emoji)</label><input type="text" id="promo-img" class="w-full py-2" placeholder="เช่น 🎁"></div>
-                            <div class="md:col-span-2"><label class="text-xs text-[var(--text-secondary)]">รายละเอียด</label><input type="text" id="promo-desc" class="w-full py-2"></div>
-                            <div><label class="text-xs text-[var(--text-secondary)]">วันหมดอายุ</label><input type="datetime-local" id="promo-expiry" required class="w-full py-2 text-sm"></div>
+                            <div><label class="text-xs text-[var(--text-secondary)] pl-2">ชื่อโปรโมชั่น</label><input type="text" id="promo-name" required class="w-full py-2 shadow-sm"></div>
+                            <div><label class="text-xs text-[var(--text-secondary)] pl-2">รูปภาพ (URL/Emoji)</label><input type="text" id="promo-img" class="w-full py-2 shadow-sm" placeholder="เช่น 🎁"></div>
+                            <div class="md:col-span-2"><label class="text-xs text-[var(--text-secondary)] pl-2">รายละเอียด</label><input type="text" id="promo-desc" class="w-full py-2 shadow-sm"></div>
+                            <div><label class="text-xs text-[var(--text-secondary)] pl-2">วันหมดอายุ</label><input type="datetime-local" id="promo-expiry" required class="w-full py-2 text-sm shadow-sm"></div>
                             
-                            <!-- Category Targets -->
                             <div>
-                                <label class="text-xs text-[var(--text-secondary)]">หมวดหมู่หลักที่ร่วมโปร</label>
-                                <select id="promo-cat" required class="w-full py-2" onchange="updatePromoSubCatOptions()"><option value="all">ทั้งหมด</option></select>
+                                <label class="text-xs text-[var(--text-secondary)] pl-2">หมวดหมู่หลักที่ร่วมโปร</label>
+                                <select id="promo-cat" required class="w-full py-2 shadow-sm" onchange="updatePromoSubCatOptions()"><option value="all">ทั้งหมด</option></select>
                             </div>
                             <div>
-                                <label class="text-xs text-[var(--text-secondary)]">หมวดหมู่ย่อยที่ร่วมโปร</label>
-                                <select id="promo-subcat" class="w-full py-2" onchange="updatePromoProductList()"><option value="all">ทั้งหมด</option></select>
+                                <label class="text-xs text-[var(--text-secondary)] pl-2">หมวดหมู่ย่อยที่ร่วมโปร</label>
+                                <select id="promo-subcat" class="w-full py-2 shadow-sm" onchange="updatePromoProductList()"><option value="all">ทั้งหมด</option></select>
                             </div>
 
-                            <!-- Promo Logic -->
                             <div>
-                                <label class="text-xs text-[var(--text-secondary)]">ประเภทโปรโมชั่น</label>
-                                <select id="promo-type" class="w-full py-2" onchange="togglePromoValueField()">
+                                <label class="text-xs text-[var(--text-secondary)] pl-2">ประเภทโปร</label>
+                                <select id="promo-type" class="w-full py-2 shadow-sm" onchange="togglePromoValueField()">
                                     <option value="discount">ลดราคา (%)</option>
                                     <option value="b1g1">1 แถม 1</option>
                                     <option value="custom">อื่นๆ (แค่แสดงป้าย)</option>
                                 </select>
                             </div>
                             <div id="promo-val-container">
-                                <label class="text-xs text-[var(--text-secondary)]">มูลค่าลด (%)</label>
-                                <input type="number" id="promo-value" class="w-full py-2" value="50">
+                                <label class="text-xs text-[var(--text-secondary)] pl-2">มูลค่าลด (%)</label>
+                                <input type="number" id="promo-value" class="w-full py-2 shadow-sm" value="50">
                             </div>
 
-                            <!-- Scope -->
                             <div class="md:col-span-2">
-                                <label class="text-xs text-[var(--text-secondary)] mb-2 block">ขอบเขตสินค้า</label>
-                                <div class="flex gap-4 mb-2">
-                                    <label><input type="radio" name="promo-scope" value="all" checked onchange="togglePromoSpecifics()"> ลดทั้งหมวดที่เลือก</label>
-                                    <label><input type="radio" name="promo-scope" value="specific" onchange="togglePromoSpecifics()"> เลือกเฉพาะสินค้า</label>
+                                <label class="text-xs text-[var(--text-secondary)] mb-2 block pl-2">ขอบเขตสินค้า</label>
+                                <div class="flex gap-4 mb-2 pl-2">
+                                    <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="promo-scope" value="all" checked onchange="togglePromoSpecifics()"> ลดทั้งหมวดที่เลือก</label>
+                                    <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="promo-scope" value="specific" onchange="togglePromoSpecifics()"> เลือกเฉพาะสินค้า</label>
                                 </div>
                                 
-                                <div id="promo-specific-container" class="hidden bg-[var(--surface-2)] p-4 rounded-xl border border-[var(--border-color)]">
-                                    <input type="text" id="promo-search" placeholder="ค้นหาสินค้า..." class="w-full py-2 mb-3 text-sm" onkeyup="filterPromoProducts()">
-                                    <div id="promo-products-list" class="max-h-40 overflow-y-auto space-y-1 text-sm border-t border-[var(--border-color)] pt-2">
-                                        <!-- Checkboxes populated via JS -->
-                                    </div>
+                                <div id="promo-specific-container" class="hidden bg-white p-4 rounded-xl border border-[var(--border-color)] shadow-sm">
+                                    <input type="text" id="promo-search" placeholder="ค้นหาสินค้า..." class="w-full py-2 mb-3 text-sm bg-[var(--surface-2)]" onkeyup="filterPromoProducts()">
+                                    <div id="promo-products-list" class="max-h-40 overflow-y-auto space-y-1 text-sm border-t border-[var(--border-color)] pt-2"></div>
                                 </div>
                             </div>
 
-                            <div class="md:col-span-2 flex gap-2">
-                                <button type="submit" class="bg-[var(--pk)] text-white px-6 py-2 rounded-full font-bold">บันทึกโปรโมชั่น</button>
-                                <button type="button" onclick="resetPromoForm()" class="bg-[var(--surface-2)] border border-[var(--border-color)] px-6 py-2 rounded-full">ล้างข้อมูล</button>
+                            <div class="md:col-span-2 flex gap-2 mt-2">
+                                <button type="submit" class="bg-[var(--pk)] text-white px-6 py-2.5 rounded-full font-bold shadow-sm hover:bg-[var(--pk3)] transition">บันทึกโปรโมชั่น</button>
+                                <button type="button" onclick="resetPromoForm()" class="bg-[var(--surface-1)] border border-[var(--border-color)] px-6 py-2.5 rounded-full shadow-sm">ล้างข้อมูล</button>
                             </div>
                         </form>
                     </div>
                     <div class="bento-window p-0 overflow-x-auto">
                         <table class="w-full">
-                            <thead class="bg-[var(--surface-2)]"><tr><th>โปรโมชั่น</th><th>ประเภท</th><th>หมดเขต</th><th>จัดการ</th></tr></thead>
+                            <thead><tr><th>โปรโมชั่น</th><th>ประเภท</th><th>หมดเขต</th><th>จัดการ</th></tr></thead>
                             <tbody id="admin-promos-table"></tbody>
                         </table>
                     </div>
@@ -520,21 +563,21 @@
                 <div id="admin-mod-categories" class="admin-module">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bento-window p-6">
-                            <h3 class="font-bold text-[var(--pk)] mb-4">หมวดหมู่หลัก (โฟลเดอร์)</h3>
+                            <h3 class="font-bold text-[var(--pk3)] mb-4">หมวดหมู่หลัก (โฟลเดอร์)</h3>
                             <form onsubmit="event.preventDefault(); addMainCat();" class="flex gap-2 mb-4">
-                                <input type="text" id="new-maincat-name" placeholder="ชื่อหมวดหมู่ใหม่" required class="flex-grow py-2">
-                                <label class="flex items-center gap-1 text-sm text-[var(--text-secondary)]"><input type="checkbox" id="new-maincat-folder"> มีหมวดย่อย</label>
-                                <button type="submit" class="bg-[var(--pk)] text-white px-4 rounded-full font-bold">+</button>
+                                <input type="text" id="new-maincat-name" placeholder="ชื่อหมวดหมู่ใหม่" required class="flex-grow py-2 shadow-sm">
+                                <label class="flex items-center gap-1 text-sm text-[var(--text-secondary)]"><input type="checkbox" id="new-maincat-folder"> มีย่อย</label>
+                                <button type="submit" class="bg-[var(--pk)] text-white px-4 rounded-full font-bold shadow-sm">+</button>
                             </form>
                             <ul id="admin-maincat-list" class="space-y-2 text-sm"></ul>
                         </div>
                         <div class="bento-window p-6">
-                            <h3 class="font-bold text-[var(--pk)] mb-4">เพิ่มหมวดหมู่ย่อย</h3>
-                            <form onsubmit="event.preventDefault(); addSubCat();" class="flex flex-col gap-2">
-                                <select id="subcat-parent" required class="w-full py-2"></select>
+                            <h3 class="font-bold text-[var(--pk3)] mb-4">เพิ่มหมวดหมู่ย่อย</h3>
+                            <form onsubmit="event.preventDefault(); addSubCat();" class="flex flex-col gap-3">
+                                <select id="subcat-parent" required class="w-full py-2 shadow-sm"></select>
                                 <div class="flex gap-2">
-                                    <input type="text" id="new-subcat-name" placeholder="ชื่อหมวดย่อยใหม่" required class="flex-grow py-2">
-                                    <button type="submit" class="bg-[var(--pk)] text-white px-4 rounded-full font-bold">+</button>
+                                    <input type="text" id="new-subcat-name" placeholder="ชื่อหมวดย่อยใหม่" required class="flex-grow py-2 shadow-sm">
+                                    <button type="submit" class="bg-[var(--pk)] text-white px-4 rounded-full font-bold shadow-sm">+</button>
                                 </div>
                             </form>
                         </div>
@@ -545,7 +588,7 @@
                 <div id="admin-mod-users" class="admin-module">
                     <div class="bento-window p-0 overflow-x-auto">
                         <table class="w-full">
-                            <thead class="bg-[var(--surface-2)]"><tr><th>ชื่อผู้ใช้</th><th>เครดิตปัจจุบัน</th><th>เติม/ลด เครดิต</th></tr></thead>
+                            <thead><tr><th>ชื่อผู้ใช้</th><th>เครดิตปัจจุบัน</th><th>เติม/ลด เครดิต</th></tr></thead>
                             <tbody id="admin-users-table"></tbody>
                         </table>
                     </div>
@@ -556,48 +599,47 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Profile/Store Details -->
                         <div class="bento-window p-6">
-                            <h3 class="font-bold text-[var(--pk)] mb-4">ข้อมูลร้านค้า (Profile)</h3>
+                            <h3 class="font-bold text-[var(--pk3)] mb-4">ข้อมูลร้านค้า (Profile)</h3>
                             <form onsubmit="event.preventDefault(); saveStoreInfo();" class="space-y-3">
-                                <div><label class="text-xs text-[var(--text-secondary)]">ชื่อร้าน</label><input type="text" id="set-store-name" class="w-full py-2"></div>
-                                <div><label class="text-xs text-[var(--text-secondary)]">คำอธิบาย</label><input type="text" id="set-store-desc" class="w-full py-2"></div>
-                                <div><label class="text-xs text-[var(--text-secondary)]">รูปโปรไฟล์ (Emoji หรือ URL)</label><input type="text" id="set-store-avatar" class="w-full py-2"></div>
-                                <button type="submit" class="w-full bg-[var(--pk)] text-white py-2 rounded-full font-bold">บันทึกข้อมูลร้าน</button>
-                            </form>
-                        </div>
-                        
-                        <!-- Theme Colors -->
-                        <div class="bento-window p-6">
-                            <h3 class="font-bold text-[var(--pk)] mb-4">ธีมสีเว็บไซต์</h3>
-                            <form onsubmit="event.preventDefault(); saveThemeColors();" class="space-y-3">
-                                <div class="flex items-center justify-between">
-                                    <label class="text-sm text-[var(--text-secondary)]">สีหลัก (Primary)</label>
-                                    <input type="color" id="set-color-pk" class="w-12 h-12 p-0 border-0 rounded cursor-pointer bg-transparent">
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <label class="text-sm text-[var(--text-secondary)]">สีรอง (Secondary)</label>
-                                    <input type="color" id="set-color-pk3" class="w-12 h-12 p-0 border-0 rounded cursor-pointer bg-transparent">
-                                </div>
-                                <button type="submit" class="w-full bg-gray-700 text-white py-2 rounded-full font-bold">บันทึกสี & นำไปใช้</button>
+                                <div><label class="text-xs text-[var(--text-secondary)] pl-2">ชื่อร้าน</label><input type="text" id="set-store-name" class="w-full py-2 shadow-sm"></div>
+                                <div><label class="text-xs text-[var(--text-secondary)] pl-2">คำอธิบาย</label><input type="text" id="set-store-desc" class="w-full py-2 shadow-sm"></div>
+                                <div><label class="text-xs text-[var(--text-secondary)] pl-2">รูปโปรไฟล์ (Emoji หรือ URL)</label><input type="text" id="set-store-avatar" class="w-full py-2 shadow-sm"></div>
+                                <button type="submit" class="w-full bg-[var(--pk)] text-white py-2.5 rounded-full font-bold shadow-sm hover:bg-[var(--pk3)] transition mt-2">บันทึกข้อมูลร้าน</button>
                             </form>
                         </div>
 
                         <!-- Bank Details / QR -->
                         <div class="bento-window p-6 md:col-span-2">
-                            <h3 class="font-bold text-[var(--pk)] mb-4">บัญชีรับเงิน & QR Code</h3>
-                            <form onsubmit="event.preventDefault(); saveBankInfo();" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="space-y-3">
-                                    <div><label class="text-xs text-[var(--text-secondary)]">ธนาคาร / ประเภท</label><input type="text" id="set-bank-name" class="w-full py-2" placeholder="เช่น พร้อมเพย์ หรือ กสิกรไทย"></div>
-                                    <div><label class="text-xs text-[var(--text-secondary)]">เลขบัญชี/พร้อมเพย์</label><input type="text" id="set-bank-no" class="w-full py-2" placeholder="ใส่เฉพาะตัวเลขเพื่อใช้สร้าง QR อัตโนมัติ"></div>
-                                    <div><label class="text-xs text-[var(--text-secondary)]">ชื่อบัญชี</label><input type="text" id="set-bank-acc" class="w-full py-2"></div>
+                            <h3 class="font-bold text-[var(--pk3)] mb-4">บัญชีรับเงิน & พร้อมเพย์ (PromptPay)</h3>
+                            <form onsubmit="event.preventDefault(); saveBankInfo();" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                
+                                <!-- Auto QR Section -->
+                                <div class="space-y-3 bg-[var(--surface-2)] p-5 rounded-2xl border border-[var(--border-color)]">
+                                    <h4 class="font-bold text-sm text-[var(--text-primary)]">สำหรับ QR ล็อกยอดอัตโนมัติ</h4>
+                                    <div><label class="text-xs text-[var(--text-secondary)] pl-2">เบอร์โทรศัพท์ หรือ เลขบัตร ปชช. (พร้อมเพย์)</label>
+                                    <input type="text" id="set-bank-ppid" class="w-full py-2 shadow-sm" placeholder="เช่น 0812345678">
+                                    <p class="text-[10px] text-[var(--text-secondary)] pl-2 mt-1">* ใส่เฉพาะตัวเลข ระบบจะนำไปสร้าง QR ล็อกยอดให้อัตโนมัติ</p>
+                                    </div>
                                 </div>
-                                <div class="space-y-3 border-l border-[var(--border-color)] pl-4">
-                                    <label class="text-xs text-[var(--text-secondary)] block">รูปภาพ QR Code (ถ้าว่าง ระบบจะสร้างให้อัตโนมัติด้วย PromptPay)</label>
-                                    <textarea id="set-bank-qr" rows="2" class="w-full py-2 text-xs leading-relaxed" placeholder="วาง Base64 หรือ URL รูป QR ของคุณ"></textarea>
+
+                                <!-- Manual Section -->
+                                <div class="space-y-3 bg-[var(--surface-2)] p-5 rounded-2xl border border-[var(--border-color)]">
+                                    <h4 class="font-bold text-sm text-[var(--text-primary)]">สำหรับโอนเงิน / QR แบบกำหนดเอง</h4>
+                                    <div><label class="text-xs text-[var(--text-secondary)] pl-2">ธนาคาร</label><input type="text" id="set-bank-name" class="w-full py-2 shadow-sm" placeholder="เช่น กสิกรไทย"></div>
+                                    <div><label class="text-xs text-[var(--text-secondary)] pl-2">เลขบัญชี</label><input type="text" id="set-bank-no" class="w-full py-2 shadow-sm"></div>
+                                    <div><label class="text-xs text-[var(--text-secondary)] pl-2">ชื่อบัญชี</label><input type="text" id="set-bank-acc" class="w-full py-2 shadow-sm"></div>
                                     
-                                    <input type="file" id="bank-qr-upload" accept="image/*" class="hidden" onchange="handleAdminQRUpload(event)">
-                                    <button type="button" onclick="document.getElementById('bank-qr-upload').click()" class="text-xs bg-[var(--surface-2)] border border-[var(--border-color)] px-4 py-2 rounded-full font-bold">🖼️ แนบรูป QR Code</button>
+                                    <div class="pt-2 border-t border-[var(--border-color)]">
+                                        <label class="text-xs text-[var(--text-secondary)] block pl-2 mb-1">รูป QR Code บัญชี (URL/Base64)</label>
+                                        <textarea id="set-bank-qr" rows="2" class="w-full py-2 text-xs shadow-sm mb-2" placeholder="อัปโหลดรูป QR ของคุณเพื่อแสดงในหน้าโอนธรรมดา"></textarea>
+                                        <input type="file" id="bank-qr-upload" accept="image/*" class="hidden" onchange="handleAdminQRUpload(event)">
+                                        <button type="button" onclick="document.getElementById('bank-qr-upload').click()" class="text-xs bg-white border border-[var(--border-color)] px-4 py-2 rounded-full font-bold shadow-sm">🖼️ แนบรูป QR Code</button>
+                                    </div>
                                 </div>
-                                <div class="md:col-span-2"><button type="submit" class="bg-[var(--pk)] text-white px-6 py-2 rounded-full font-bold w-full md:w-auto">บันทึกบัญชี</button></div>
+                                
+                                <div class="md:col-span-2 text-center mt-2">
+                                    <button type="submit" class="bg-[var(--pk)] text-white px-8 py-3 rounded-full font-bold shadow-sm hover:bg-[var(--pk3)] transition w-full md:w-auto">บันทึกข้อมูลบัญชี</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -609,61 +651,56 @@
 
     <!-- Product Modal (Customer View) -->
     <div id="modal-product" class="fixed inset-0 z-[105] modal-overlay flex items-center justify-center p-4">
-        <div class="bento-window modal-content w-full max-w-sm flex flex-col max-h-[85vh] shadow-2xl relative">
-            <div class="window-header justify-between relative z-10">
-                <div class="w-3.5 h-3.5 rounded-full bg-[var(--mac-red)] cursor-pointer" onclick="closeProductDetail()"></div>
-                <span class="text-xs font-bold text-[var(--pk)] tracking-widest uppercase brand-font">Product</span>
+        <div class="bento-window modal-content w-full max-w-sm flex flex-col max-h-[85vh] shadow-2xl relative bg-white border-0">
+            <div class="window-header justify-between relative z-10 bg-white border-b-0 pb-2">
+                <div class="w-3.5 h-3.5 rounded-full bg-[var(--mac-red)] cursor-pointer hover:scale-110 transition" onclick="closeProductDetail()"></div>
+                <span class="text-xs font-bold text-[var(--pk3)] tracking-widest uppercase brand-font bg-[var(--surface-2)] px-3 py-1 rounded-full">Product</span>
             </div>
             
-            <div class="overflow-y-auto p-6 no-scrollbar flex-grow bg-[var(--surface-2)]">
+            <div class="overflow-y-auto p-5 no-scrollbar flex-grow bg-white">
                 <!-- Gallery Container -->
-                <div class="w-full aspect-square bg-[var(--surface-1)] rounded-2xl mb-5 border border-[var(--border-color)] overflow-hidden flex snap-x-mandatory overflow-x-auto no-scrollbar relative" id="modal-img-container">
-                    <!-- Images go here -->
-                </div>
+                <div class="w-full aspect-square bg-[var(--surface-2)] rounded-3xl mb-5 overflow-hidden flex snap-x-mandatory overflow-x-auto no-scrollbar relative shadow-inner" id="modal-img-container"></div>
 
-                <div class="text-center mb-4 relative">
-                    <span id="modal-detail-cat" class="text-[10px] text-[var(--pk)] border border-[var(--pk)] px-2 py-1 rounded-full font-bold uppercase tracking-widest mb-2 inline-block">Cat</span>
-                    <h2 id="modal-detail-name" class="font-bold text-xl text-[var(--text-primary)] leading-tight brand-font">Name</h2>
+                <div class="text-center mb-2 relative">
+                    <span id="modal-detail-cat" class="text-[10px] text-[var(--text-secondary)] bg-[var(--surface-2)] border border-[var(--border-color)] px-3 py-1 rounded-full font-bold tracking-widest mb-3 inline-block">Cat</span>
+                    <h2 id="modal-detail-name" class="font-bold text-2xl text-[var(--text-primary)] leading-tight brand-font mb-1">Name</h2>
                     
-                    <div id="modal-detail-price-box" class="mt-2">
-                        <span id="modal-detail-old-price" class="text-sm text-[var(--text-secondary)] line-through mr-2 hidden">0 ฿</span>
-                        <span id="modal-detail-price" class="text-[var(--pk)] font-bold text-2xl font-mono">0 ฿</span>
+                    <div id="modal-detail-promo-badge" class="mt-1 mb-2 inline-block bg-red-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full hidden shadow-sm">PROMO</div>
+                    
+                    <div id="modal-detail-price-box" class="mt-2 flex items-end justify-center gap-2">
+                        <span id="modal-detail-old-price" class="text-sm text-[var(--text-secondary)] line-through hidden mb-1">0 ฿</span>
+                        <span id="modal-detail-price" class="text-[var(--pk3)] font-bold text-3xl font-mono">0 ฿</span>
                     </div>
-                    <div id="modal-detail-promo-badge" class="mt-2 inline-block bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full hidden">PROMO</div>
                 </div>
             </div>
-            <div class="p-4 border-t border-[var(--border-color)] bg-[var(--surface-1)]">
-                <button onclick="addProductToCart()" class="w-full btn-earth py-3.5 rounded-full font-bold text-lg transition">เพิ่มลงตะกร้า</button>
+            <div class="p-5 border-t border-[var(--border-color)] bg-white rounded-b-3xl">
+                <button onclick="addProductToCart()" class="w-full btn-earth py-4 rounded-full font-bold text-lg transition shadow-md">เพิ่มลงตะกร้า</button>
             </div>
         </div>
     </div>
 
     <!-- Toast -->
-    <div id="toast" class="fixed top-20 left-1/2 transform -translate-x-1/2 z-[300] bg-[var(--pk)] text-white px-6 py-3 rounded-full shadow-lg font-bold transition-all duration-300 opacity-0 pointer-events-none text-sm tracking-wide text-center min-w-[200px]">
+    <div id="toast" class="fixed top-20 left-1/2 transform -translate-x-1/2 z-[300] bg-[var(--text-primary)] text-white px-6 py-3 rounded-full shadow-lg font-bold transition-all duration-300 opacity-0 pointer-events-none text-sm tracking-wide text-center min-w-[200px]">
         <span id="toast-msg"></span>
     </div>
 
     <script>
         // --- 1. Database & State ---
-        const DB_KEY = 'pinkjulieland_full_v2'; 
+        const DB_KEY = 'pinkjulieland_full_v3'; 
         
         let db = {
             storeInfo: { name: 'PinkJulieLand', desc: 'รับออกแบบเว็บไซต์ & ตัวแทนจำหน่ายแอป', avatar: '🌸' },
-            themeVars: { pk: '#ff80b5', pk3: '#e8407a' },
-            bank: { bank: 'พร้อมเพย์', no: '0987654321', name: 'บจก. พิงค์จูลี่แลนด์', customQr: '' },
+            bank: { ppId: '0987654321', bank: 'กสิกรไทย', no: '012-3-45678-9', name: 'บจก. พิงค์จูลี่แลนด์', customQr: '' },
             categories: [
                 { id: 'all', name: 'ทั้งหมด', isFolder: false, subs: [] },
                 { id: 'c1', name: 'ฟอนต์ลายมือ', isFolder: true, subs: ['เซ็ตพรีเมียม', 'ธรรมดา'] },
                 { id: 'c2', name: 'แอปพลิเคชัน', isFolder: false, subs: [] }
             ],
             products: [
-                // image field is deprecated, using images: [] instead, but we handle fallback
                 { id: 1, name: 'ฟอนต์ นุ่มฟู', category: 'ฟอนต์ลายมือ', subCategory: 'ธรรมดา', price: 59, images: ['Aa'] },
                 { id: 2, name: 'Goodnotes', category: 'แอปพลิเคชัน', subCategory: null, price: 50, images: ['📝'] }
             ],
-            promotions: [
-                { id: 1, name: 'ลดแหลก 50%', desc: 'จัดโปรคุ้มๆ', image: '🔥', expiry: '2027-12-31T23:59', catTarget: 'ทั้งหมด', subCatTarget: 'ทั้งหมด', type: 'discount', value: 50, scope: 'all', specificProducts: [] }
-            ],
+            promotions: [],
             users: [
                 { username: 'admin', password: 'admin', role: 'admin', credit: 0 },
                 { username: 'user1', password: '123', role: 'customer', credit: 500 }
@@ -674,7 +711,7 @@
         let activeMainCat = 'ทั้งหมด';
         let activeSubCat = null;
         let activeProduct = null;
-        let checkoutCtx = { amount: 0 };
+        let checkoutCtx = { amount: 0, method: 'credit' };
         let salesChartInstance = null;
 
         // --- 2. Initialization & Core ---
@@ -684,15 +721,10 @@
                 try {
                     const parsed = JSON.parse(saved);
                     db = { ...db, ...parsed }; 
-                    // Safeties
-                    if(!db.promotions) db.promotions = [];
-                    if(!db.bank) db.bank = { bank: 'พร้อมเพย์', no: '0987654321', name: 'Admin', customQr: '' };
-                    // Migrate old product image to images array
-                    db.products.forEach(p => { if(!p.images && p.image) p.images = [p.image]; if(!p.images) p.images=['📦']; });
+                    if(!db.bank) db.bank = { ppId: '', bank: '', no: '', name: '', customQr: '' };
+                    if(db.bank && !db.bank.ppId && db.bank.no) db.bank.ppId = db.bank.no; // basic migration
                 } catch(e) { console.error('DB Parse error', e); }
             }
-            applyThemeColors();
-            initThemeMode();
             applyStoreInfo();
             renderDrawerNav();
             updateBadges();
@@ -706,10 +738,8 @@
             setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translate(-50%, -20px)'; }, 3000);
         }
 
-        // Generate ID
         function genId() { return Date.now() + Math.floor(Math.random()*1000); }
 
-        // Core Image Helper
         function renderImageHtml(imgStr, classes="w-full h-full object-cover") {
             if(!imgStr) return '📦';
             if(imgStr.startsWith('http') || imgStr.startsWith('data:image')) return `<img src="${imgStr}" class="${classes}" alt="img">`;
@@ -725,7 +755,7 @@
                 if(p.catTarget !== 'ทั้งหมด' && p.catTarget !== product.category) continue;
                 if(p.subCatTarget !== 'ทั้งหมด' && p.subCatTarget !== product.subCategory) continue;
                 if(p.scope === 'specific' && (!p.specificProducts || !p.specificProducts.includes(product.id.toString()))) continue;
-                activeP = p; // Take the latest matched promo
+                activeP = p;
             }
             return activeP;
         }
@@ -733,45 +763,19 @@
         function calculateProductPrice(product) {
             const promo = getActivePromo(product);
             if(!promo) return { price: product.price, oldPrice: null, promo };
-            
             if(promo.type === 'discount') {
                 const newPrice = Math.max(0, product.price * (1 - (promo.value/100)));
                 return { price: newPrice, oldPrice: product.price, promo };
             }
-            return { price: product.price, oldPrice: null, promo }; // b1g1 or custom don't change absolute price here
+            return { price: product.price, oldPrice: null, promo };
         }
 
-        // --- 3. UI Updates (Theme & Store Info) ---
+        // --- 3. UI Updates ---
         function applyStoreInfo() {
             document.getElementById('ui-store-name-header').innerHTML = `<span>${db.storeInfo.name}</span>`;
             document.getElementById('ui-store-name-hero').innerText = db.storeInfo.name;
             document.getElementById('ui-store-desc-hero').innerText = db.storeInfo.desc;
             document.getElementById('drawer-avatar').innerHTML = renderImageHtml(db.storeInfo.avatar);
-        }
-
-        function applyThemeColors() {
-            const root = document.documentElement;
-            root.style.setProperty('--pk', db.themeVars.pk);
-            root.style.setProperty('--pk3', db.themeVars.pk3);
-            root.style.setProperty('--pk2', db.themeVars.pk + '80'); 
-        }
-
-        function toggleTheme() {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
-            const newTheme = current === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('pj_theme_mode', newTheme);
-            updateThemeIcon();
-        }
-        function initThemeMode() {
-            const saved = localStorage.getItem('pj_theme_mode') || 'dark';
-            document.documentElement.setAttribute('data-theme', saved);
-            updateThemeIcon();
-        }
-        function updateThemeIcon() {
-            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-            document.getElementById('theme-icon-btn').innerText = isLight ? '☀️' : '🌙';
         }
 
         // --- 4. Navigation & Drawer ---
@@ -784,7 +788,10 @@
                 document.getElementById('view-dashboard').classList.add('hidden');
                 document.getElementById('view-admin').classList.add('hidden');
 
-                if(!db.currentUser) document.getElementById('view-login').classList.remove('hidden');
+                if(!db.currentUser) {
+                    document.getElementById('view-login').classList.remove('hidden');
+                    switchLoginTab('cust'); // default to customer tab
+                }
                 else if(db.currentUser.role === 'admin') { 
                     document.getElementById('view-admin').classList.remove('hidden'); 
                     initAdminPanel(); 
@@ -840,9 +847,27 @@
         }
 
         // --- 5. Shop & Products (Frontend) ---
+        function extractEmoji(str) {
+            const match = str.match(/\p{Emoji}/u);
+            return match ? match[0] : null;
+        }
+
         function renderShop() {
             const mainCon = document.getElementById('ui-main-categories');
-            mainCon.innerHTML = db.categories.map(c => `<button onclick="selectMainCat('${c.name}')" class="whitespace-nowrap font-bold text-sm cat-pill ${activeMainCat === c.name ? 'active' : ''}">${c.name}</button>`).join('');
+            
+            // Box style categories
+            mainCon.innerHTML = db.categories.map(c => {
+                const isActive = activeMainCat === c.name;
+                const emoji = extractEmoji(c.name) || (c.id === 'all' ? '🏠' : (c.isFolder ? '📁' : '📦'));
+                const cleanName = c.name.replace(/\p{Emoji}/gu, '').trim();
+                
+                return `
+                <div onclick="selectMainCat('${c.name}')" class="category-box ${isActive ? 'active' : ''}">
+                    <span class="text-3xl">${emoji}</span>
+                    <span class="text-[11px] font-bold text-center leading-tight truncate w-full">${cleanName}</span>
+                </div>
+                `;
+            }).join('');
 
             const catObj = db.categories.find(c => c.name === activeMainCat);
             const subCon = document.getElementById('ui-sub-categories-container');
@@ -869,7 +894,7 @@
             }
 
             if (filtered.length === 0) {
-                productsGrid.innerHTML = `<div class="col-span-full text-center py-16 text-[var(--text-secondary)] text-sm border border-dashed border-[var(--border-color)] rounded-3xl">ไม่พบสินค้า</div>`;
+                productsGrid.innerHTML = `<div class="col-span-full text-center py-16 text-[var(--text-secondary)] text-sm border border-dashed border-[var(--border-color)] rounded-3xl bg-[var(--surface-1)]">ไม่พบสินค้าในหมวดหมู่นี้</div>`;
                 return;
             }
 
@@ -880,26 +905,26 @@
                 let promoBadge = '';
                 if(promo) {
                     let badgeText = promo.type === 'discount' ? `ลด ${promo.value}%` : (promo.type === 'b1g1' ? '1 แถม 1' : 'HOT');
-                    promoBadge = `<div class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full z-10 shadow-md flex items-center gap-1"><span>${promo.image || '🔥'}</span>${badgeText}</div>`;
+                    promoBadge = `<div class="absolute top-2 left-2 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm flex items-center gap-1"><span>${promo.image || '🔥'}</span>${badgeText}</div>`;
                 }
 
                 return `
-                <div class="bg-[var(--surface-1)] border border-[var(--border-color)] rounded-2xl p-3 shadow-sm hover:shadow-md transition relative flex flex-col cursor-pointer" onclick="openProduct(${p.id})">
+                <div class="bg-[var(--surface-1)] border border-[var(--border-color)] rounded-3xl p-3 shadow-sm hover:shadow-custom transition relative flex flex-col cursor-pointer" onclick="openProduct(${p.id})">
                     ${promoBadge}
-                    <div class="aspect-square bg-[var(--surface-2)] rounded-xl flex items-center justify-center mb-3 text-5xl overflow-hidden relative">
+                    <div class="aspect-square bg-[var(--surface-2)] rounded-2xl flex items-center justify-center mb-3 text-5xl overflow-hidden relative shadow-inner">
                         ${renderImageHtml(displayImg)}
                     </div>
-                    <div class="flex-grow">
+                    <div class="flex-grow px-1">
                         <h3 class="text-sm font-bold text-[var(--text-primary)] line-clamp-1">${p.name}</h3>
-                        <p class="text-[10px] text-[var(--text-secondary)] mt-1">${p.subCategory || p.category}</p>
+                        <p class="text-[10px] text-[var(--text-secondary)] mt-0.5">${p.subCategory || p.category}</p>
                     </div>
-                    <div class="mt-2 flex items-end justify-between gap-1">
+                    <div class="mt-2 px-1 flex items-end justify-between gap-1">
                         <div>
-                            ${oldPrice ? `<div class="text-[10px] text-[var(--text-secondary)] line-through">฿${oldPrice}</div>` : ''}
-                            <div class="text-[var(--pk)] font-bold font-mono text-lg leading-none">฿${price}</div>
+                            ${oldPrice ? `<div class="text-[9px] text-[var(--text-secondary)] line-through">฿${oldPrice}</div>` : ''}
+                            <div class="text-[var(--pk3)] font-bold font-mono text-lg leading-none">฿${price}</div>
                         </div>
-                        <button class="w-8 h-8 rounded-full bg-[var(--pk)] text-white flex items-center justify-center hover:scale-110 transition shrink-0 shadow-md" onclick="quickAddCart(event, ${p.id})">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        <button class="w-8 h-8 rounded-full bg-[var(--surface-2)] text-[var(--pk3)] border border-[var(--pk2)] flex items-center justify-center hover:bg-[var(--pk)] hover:text-white hover:border-[var(--pk)] transition shrink-0 shadow-sm" onclick="quickAddCart(event, ${p.id})">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
                         </button>
                     </div>
                 </div>
@@ -928,11 +953,11 @@
             const galleryCon = document.getElementById('modal-img-container');
             if(p.images && p.images.length > 0) {
                 galleryCon.innerHTML = p.images.map(img => `
-                    <div class="min-w-full h-full flex items-center justify-center text-6xl snap-center shrink-0">
+                    <div class="min-w-full h-full flex items-center justify-center text-7xl snap-center shrink-0">
                         ${renderImageHtml(img)}
                     </div>
                 `).join('');
-            } else { galleryCon.innerHTML = `<div class="min-w-full h-full flex items-center justify-center text-6xl snap-center">📦</div>`; }
+            } else { galleryCon.innerHTML = `<div class="min-w-full h-full flex items-center justify-center text-7xl snap-center">📦</div>`; }
             
             document.getElementById('modal-detail-name').innerText = p.name;
             document.getElementById('modal-detail-cat').innerText = p.subCategory ? `${p.category} > ${p.subCategory}` : p.category;
@@ -957,7 +982,6 @@
         
         function addProductToCart() {
             if(!activeProduct) return;
-            // Re-use quickAddCart logic by passing pseudo event
             quickAddCart({stopPropagation:()=>{}}, activeProduct.id);
             closeProductDetail();
         }
@@ -976,21 +1000,21 @@
             }
             document.getElementById('cart-summary-box').style.display = 'block';
             con.innerHTML = db.cart.map((item, idx) => `
-                <div class="bg-[var(--surface-2)] border border-[var(--border-color)] p-3 rounded-2xl flex items-center gap-4">
-                    <div class="w-16 h-16 bg-[var(--surface-1)] rounded-xl flex items-center justify-center text-3xl overflow-hidden shrink-0">
+                <div class="bg-white border border-[var(--border-color)] p-3 rounded-2xl flex items-center gap-4 shadow-sm">
+                    <div class="w-16 h-16 bg-[var(--surface-2)] rounded-xl flex items-center justify-center text-3xl overflow-hidden shrink-0 border border-[var(--border-color)]">
                         ${renderImageHtml(item.image)}
                     </div>
                     <div class="flex-grow">
                         <h4 class="text-sm font-bold text-[var(--text-primary)] line-clamp-1">${item.name}</h4>
                         <div class="flex items-center gap-2">
-                            <div class="text-[var(--pk)] font-bold mt-1 font-mono">฿${item.price}</div>
-                            ${item.promoDesc ? `<span class="text-[10px] bg-red-500/20 text-red-400 px-1.5 rounded">${item.promoDesc}</span>` : ''}
+                            <div class="text-[var(--pk3)] font-bold mt-1 font-mono">฿${item.price}</div>
+                            ${item.promoDesc ? `<span class="text-[9px] bg-red-100 text-red-500 px-1.5 rounded-full">${item.promoDesc}</span>` : ''}
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 bg-[var(--surface-1)] rounded-full px-2 py-1 border border-[var(--border-color)] shrink-0">
+                    <div class="flex items-center gap-2 bg-[var(--surface-2)] rounded-full px-2 py-1 border border-[var(--border-color)] shrink-0">
                         <button onclick="updateCartQty(${idx}, -1)" class="w-6 h-6 text-[var(--text-secondary)] font-bold">-</button>
                         <span class="text-xs font-bold w-4 text-center text-[var(--text-primary)]">${item.qty}</span>
-                        <button onclick="updateCartQty(${idx}, 1)" class="w-6 h-6 text-[var(--pk)] font-bold">+</button>
+                        <button onclick="updateCartQty(${idx}, 1)" class="w-6 h-6 text-[var(--pk3)] font-bold">+</button>
                     </div>
                 </div>
             `).join('');
@@ -1002,53 +1026,66 @@
             if(db.cart.length === 0) return;
             if(!db.currentUser) { showToast('กรุณาเข้าสู่ระบบก่อน'); return nav('auth'); }
             let t = db.cart.reduce((s,i)=>s+(i.price*i.qty),0); checkoutCtx.amount = t;
+            
             document.getElementById('pay-amount').innerText = `${t} ฿`;
             document.getElementById('checkout-credit-balance').innerText = `${db.currentUser.credit} ฿`;
             
-            document.getElementById('checkout-acc-bank').innerText = db.bank.bank;
-            document.getElementById('checkout-acc-name').innerText = db.bank.name;
-            document.getElementById('checkout-acc-no').innerText = db.bank.no;
+            // Setup Auto QR (PromptPay)
+            const autoQrImg = document.getElementById('checkout-auto-qr-img');
+            const cleanPpId = db.bank.ppId ? db.bank.ppId.replace(/\D/g, '') : '';
+            if(cleanPpId) autoQrImg.src = `https://promptpay.io/${cleanPpId}/${checkoutCtx.amount}.png`;
+            else autoQrImg.src = ''; // Fallback or placeholder
+
+            // Setup Manual 
+            document.getElementById('checkout-acc-bank').innerText = db.bank.bank || 'ไม่ระบุธนาคาร';
+            document.getElementById('checkout-acc-name').innerText = db.bank.name || '-';
+            document.getElementById('checkout-acc-no').innerText = db.bank.no || '-';
             
-            // Setup QR
-            const qrImg = document.getElementById('checkout-qr-img');
+            const manualQrImg = document.getElementById('checkout-manual-qr-img');
+            const manualQrWrap = document.getElementById('custom-qr-wrapper');
             if(db.bank.customQr) {
-                qrImg.src = db.bank.customQr;
+                manualQrImg.src = db.bank.customQr;
+                manualQrWrap.classList.remove('hidden');
             } else {
-                const cleanNo = db.bank.no.replace(/\D/g, ''); // Extract only numbers
-                if(cleanNo) qrImg.src = `https://promptpay.io/${cleanNo}/${checkoutCtx.amount}.png`;
-                else qrImg.src = ''; // fallback
+                manualQrWrap.classList.add('hidden');
             }
             
-            switchPayMethod('bank'); nav('checkout');
+            switchPayMethod('credit'); // Default to credit
+            nav('checkout');
+        }
+
+        function switchPayMethod(method) {
+            checkoutCtx.method = method;
+            const tabs = ['credit', 'autoqr', 'manual'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-pay-${t}`);
+                const sec = document.getElementById(`checkout-method-${t}`);
+                if(t === method) {
+                    btn.className = 'flex-1 min-w-[100px] py-3 rounded-[14px] font-bold text-xs bg-[var(--pk)] text-white shadow-sm transition';
+                    sec.style.display = 'block';
+                } else {
+                    btn.className = 'flex-1 min-w-[100px] py-3 rounded-[14px] font-bold text-xs text-[var(--text-secondary)] transition hover:bg-[var(--surface-2)]';
+                    sec.style.display = 'none';
+                }
+            });
+            
+            if(method === 'credit') {
+                const btn = document.getElementById('btn-confirm-credit');
+                const err = document.getElementById('checkout-credit-error');
+                if(db.currentUser.credit < checkoutCtx.amount) { btn.disabled=true; err.classList.remove('hidden'); btn.classList.add('opacity-50');}
+                else { btn.disabled=false; err.classList.add('hidden'); btn.classList.remove('opacity-50');}
+            }
         }
 
         function copyAccNo() { navigator.clipboard.writeText(db.bank.no).then(()=>showToast('คัดลอกเลขบัญชีแล้ว')); }
 
-        function previewSlip(input) {
+        function previewSlip(input, type) {
             if(input.files && input.files[0]) {
                 const r = new FileReader(); r.onload = e => {
-                    document.getElementById('slip-img-preview').src = e.target.result;
-                    document.getElementById('slip-placeholder').classList.add('hidden');
-                    document.getElementById('slip-preview-container').classList.remove('hidden');
+                    document.getElementById(`slip-img-preview-${type}`).src = e.target.result;
+                    document.getElementById(`slip-placeholder-${type}`).classList.add('hidden');
+                    document.getElementById(`slip-preview-container-${type}`).classList.remove('hidden');
                 }; r.readAsDataURL(input.files[0]);
-            }
-        }
-
-        function switchPayMethod(method) {
-            const bBank = document.getElementById('tab-pay-bank'), bCred = document.getElementById('tab-pay-credit');
-            const sBank = document.getElementById('checkout-method-bank'), sCred = document.getElementById('checkout-method-credit');
-            if(method === 'bank') {
-                bBank.className = 'flex-1 py-3 rounded-full font-bold text-sm bg-[var(--pk)] text-white shadow-sm transition';
-                bCred.className = 'flex-1 py-3 rounded-full font-bold text-sm text-[var(--text-secondary)] transition bg-[var(--surface-1)] border border-[var(--border-color)]';
-                sBank.style.display = 'block'; sCred.style.display = 'none';
-            } else {
-                bCred.className = 'flex-1 py-3 rounded-full font-bold text-sm bg-[var(--pk)] text-white shadow-sm transition';
-                bBank.className = 'flex-1 py-3 rounded-full font-bold text-sm text-[var(--text-secondary)] transition bg-[var(--surface-1)] border border-[var(--border-color)]';
-                sBank.style.display = 'none'; sCred.style.display = 'block';
-                const btn = document.getElementById('btn-confirm-credit');
-                const err = document.getElementById('checkout-credit-error');
-                if(db.currentUser.credit < checkoutCtx.amount) { btn.disabled=true; err.classList.remove('hidden'); }
-                else { btn.disabled=false; err.classList.add('hidden'); }
             }
         }
 
@@ -1062,10 +1099,12 @@
             recordOrder('เครดิต', 'สำเร็จ');
             showToast('ชำระเงินสำเร็จ 🌸'); nav('auth');
         }
-        function confirmSlip() {
-            const input = document.getElementById('slip-upload');
+        
+        function confirmSlip(type) {
+            const input = document.getElementById(`slip-upload-${type}`);
             if(!input.files || input.files.length === 0) return showToast('กรุณาแนบรูปสลิป (จำลองแนบรูปเพื่อไปต่อ)');
-            recordOrder('โอนเงิน', 'รอตรวจสอบ'); 
+            const methodName = type === 'auto' ? 'QR ล็อกยอด' : 'โอน/QR ทั่วไป';
+            recordOrder(methodName, 'รอตรวจสอบ'); 
             showToast('แจ้งชำระเงินสำเร็จ รอตรวจสอบ 🌸'); nav('auth'); 
         }
         
@@ -1079,12 +1118,32 @@
         }
 
         // --- 7. Auth & Profile ---
+        function switchLoginTab(type) {
+            if(type === 'cust') {
+                document.getElementById('tab-login-cust').classList.add('active');
+                document.getElementById('tab-login-admin').classList.remove('active');
+                document.getElementById('login-cust-box').classList.remove('hidden');
+                document.getElementById('login-admin-box').classList.add('hidden');
+            } else {
+                document.getElementById('tab-login-admin').classList.add('active');
+                document.getElementById('tab-login-cust').classList.remove('active');
+                document.getElementById('login-admin-box').classList.remove('hidden');
+                document.getElementById('login-cust-box').classList.add('hidden');
+            }
+        }
+
+        function mockGoogleLogin() {
+            const u = db.users.find(x => x.username === 'user1');
+            if(u) { db.currentUser = u; showToast(`ยินดีต้อนรับ ${u.username}`); nav('auth'); }
+        }
+
         function handleLogin() {
             const id = document.getElementById('login-id').value.trim(), p = document.getElementById('login-pass').value;
-            const u = db.users.find(x => x.username === id && x.password === p);
-            if(u) { db.currentUser = u; showToast(`ยินดีต้อนรับ ${u.username}`); nav('auth'); }
-            else showToast('ชื่อผู้ใช้หรือรหัสผ่านผิด');
+            const u = db.users.find(x => x.username === id && x.password === p && x.role === 'admin');
+            if(u) { db.currentUser = u; showToast(`เข้าสู่ระบบแอดมิน`); nav('auth'); }
+            else showToast('ข้อมูลไม่ถูกต้อง หรือไม่ใช่สิทธิ์แอดมิน');
         }
+        
         function logout() { db.currentUser = null; nav('auth'); }
 
         function renderProfile() {
@@ -1093,11 +1152,17 @@
             
             const myOrders = db.orders.filter(o => o.username === db.currentUser.username);
             const con = document.getElementById('user-history-container');
-            if(myOrders.length===0) con.innerHTML='<p class="text-[var(--text-secondary)] text-sm">ไม่มีประวัติ</p>';
+            if(myOrders.length===0) con.innerHTML='<p class="text-[var(--text-secondary)] text-sm text-center py-4 bg-[var(--surface-1)] rounded-xl">ไม่มีประวัติคำสั่งซื้อ</p>';
             else con.innerHTML = myOrders.map(o => `
-                <div class="bg-[var(--surface-2)] p-3 rounded-xl border border-[var(--border-color)] flex justify-between items-center">
-                    <div><span class="text-sm font-bold text-white block">${o.id}</span><span class="text-[10px] text-[var(--text-secondary)]">${o.date}</span></div>
-                    <div class="text-right"><span class="text-sm font-mono text-[var(--pk2)]">${o.amount}฿</span><br><span class="text-[10px] ${o.status==='สำเร็จ'?'text-green-400':'text-yellow-400'}">${o.status}</span></div>
+                <div class="bg-[var(--surface-2)] p-4 rounded-2xl border border-[var(--border-color)] flex justify-between items-center shadow-sm">
+                    <div>
+                        <span class="text-sm font-bold text-[var(--text-primary)] block">${o.id}</span>
+                        <span class="text-[10px] text-[var(--text-secondary)]">${o.date} &middot; ${o.method}</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-sm font-mono text-[var(--pk3)] font-bold">${o.amount}฿</span><br>
+                        <span class="text-[10px] ${o.status==='สำเร็จ'?'text-green-500 bg-green-50 px-1 rounded':'text-yellow-600 bg-yellow-50 px-1 rounded font-bold'}">${o.status}</span>
+                    </div>
                 </div>`).join('');
         }
 
@@ -1134,15 +1199,15 @@
 
             if(salesChartInstance) salesChartInstance.destroy();
             const ctx = document.getElementById('salesChart').getContext('2d');
-            const pkColor = getComputedStyle(document.documentElement).getPropertyValue('--pk').trim();
+            const pkColor = getComputedStyle(document.documentElement).getPropertyValue('--pk3').trim();
 
             salesChartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: labels,
-                    datasets: [{ label: 'ยอด (฿)', data: data, backgroundColor: pkColor + '80', borderColor: pkColor, borderWidth: 1, borderRadius: 4 }]
+                    datasets: [{ label: 'ยอด (฿)', data: data, backgroundColor: pkColor + '80', borderColor: pkColor, borderWidth: 1, borderRadius: 6 }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' } }, x: { grid: { display: false } } } }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,143,171,0.2)' } }, x: { grid: { display: false } } } }
             });
         }
 
@@ -1151,17 +1216,17 @@
             const tbody = document.getElementById('admin-orders-table');
             tbody.innerHTML = db.orders.map(o => `
                 <tr>
-                    <td>${o.id}</td><td>${o.username}</td><td class="font-mono text-[var(--pk2)]">${o.amount}฿</td>
-                    <td><span class="text-xs px-2 py-1 rounded bg-[var(--surface-1)] border border-[var(--border-color)]">${o.method}</span></td>
-                    <td class="text-xs text-[var(--text-secondary)]">${o.date.split(' ')[0]}</td>
+                    <td>${o.id}</td><td>${o.username}</td><td class="font-mono text-[var(--pk3)] font-bold">${o.amount}฿</td>
+                    <td><span class="text-[10px] px-2 py-1 rounded-full bg-[var(--surface-1)] border border-[var(--border-color)]">${o.method}</span></td>
+                    <td class="text-[11px] text-[var(--text-secondary)]">${o.date.split(' ')[0]}</td>
                     <td>
-                        <select onchange="updateOrderStatus('${o.id}', this.value)" class="!py-1 !px-2 !text-xs !bg-[var(--surface-1)]">
+                        <select onchange="updateOrderStatus('${o.id}', this.value)" class="!py-1 !px-2 !text-xs !bg-[var(--surface-1)] shadow-sm">
                             <option value="รอตรวจสอบ" ${o.status==='รอตรวจสอบ'?'selected':''}>รอตรวจสอบ</option>
                             <option value="สำเร็จ" ${o.status==='สำเร็จ'?'selected':''}>สำเร็จ</option>
                             <option value="ยกเลิก" ${o.status==='ยกเลิก'?'selected':''}>ยกเลิก</option>
                         </select>
                     </td>
-                    <td><button onclick="deleteOrder('${o.id}')" class="text-red-400 hover:text-red-300 text-xs font-bold">ลบ</button></td>
+                    <td><button onclick="deleteOrder('${o.id}')" class="text-red-500 hover:text-red-400 text-xs font-bold bg-red-50 px-2 py-1 rounded">ลบ</button></td>
                 </tr>
             `).join('') || '<tr><td colspan="7" class="text-center py-4 text-[var(--text-secondary)]">ไม่มีออเดอร์</td></tr>';
         }
@@ -1183,13 +1248,13 @@
                 const imgDisplay = p.images && p.images.length > 0 ? p.images[0] : '📦';
                 return `
                 <tr>
-                    <td class="text-2xl w-12 h-12 inline-flex items-center justify-center overflow-hidden rounded">${renderImageHtml(imgDisplay)}</td>
+                    <td class="text-2xl w-12 h-12 inline-flex items-center justify-center overflow-hidden rounded-xl bg-[var(--surface-1)] border border-[var(--border-color)]">${renderImageHtml(imgDisplay)}</td>
                     <td class="font-bold">${p.name}</td>
                     <td class="text-xs text-[var(--text-secondary)]">${p.category} ${p.subCategory ? '> '+p.subCategory : ''}</td>
-                    <td class="font-mono text-[var(--pk2)]">${p.price}฿</td>
+                    <td class="font-mono text-[var(--pk3)] font-bold">${p.price}฿</td>
                     <td>
-                        <button onclick='editProduct(${JSON.stringify(p).replace(/'/g, "&#39;")})' class="text-blue-400 mr-2 text-xs">แก้ไข</button>
-                        <button onclick="deleteProduct(${p.id})" class="text-red-400 text-xs">ลบ</button>
+                        <button onclick='editProduct(${JSON.stringify(p).replace(/'/g, "&#39;")})' class="text-blue-500 bg-blue-50 px-2 py-1 rounded text-xs mr-1">แก้ไข</button>
+                        <button onclick="deleteProduct(${p.id})" class="text-red-500 bg-red-50 px-2 py-1 rounded text-xs">ลบ</button>
                     </td>
                 </tr>
             `}).join('') || '<tr><td colspan="5" class="text-center py-4 text-[var(--text-secondary)]">ไม่มีสินค้า</td></tr>';
@@ -1221,7 +1286,7 @@
                 r.readAsDataURL(file);
             });
             showToast('กำลังแปลงรูปภาพ กรุณารอสักครู่...');
-            e.target.value = ''; // reset
+            e.target.value = ''; 
         }
 
         function saveProduct() {
@@ -1257,7 +1322,6 @@
 
         // 8.4 Admin Promotions
         function renderAdminPromos() {
-            // Populate Cat dropdowns
             const catSel = document.getElementById('promo-cat');
             catSel.innerHTML = `<option value="ทั้งหมด">ทั้งหมด</option>` + db.categories.filter(c => c.id !== 'all').map(c => `<option value="${c.name}">${c.name}</option>`).join('');
             updatePromoSubCatOptions();
@@ -1267,10 +1331,10 @@
                 <tr>
                     <td class="font-bold flex items-center gap-2"><span class="text-2xl">${renderImageHtml(p.image, "w-8 h-8 object-cover rounded")}</span> ${p.name}</td>
                     <td class="text-xs text-[var(--text-secondary)]">${p.type === 'discount' ? `ลด ${p.value}%` : (p.type === 'b1g1' ? '1 แถม 1' : 'อื่นๆ')}</td>
-                    <td class="text-xs text-[var(--pk2)]">${new Date(p.expiry).toLocaleDateString('th-TH')}</td>
+                    <td class="text-[11px] text-[var(--pk3)]">${new Date(p.expiry).toLocaleDateString('th-TH')}</td>
                     <td>
-                        <button onclick='editPromo(${JSON.stringify(p).replace(/'/g, "&#39;")})' class="text-blue-400 mr-2 text-xs">แก้ไข</button>
-                        <button onclick="deletePromo(${p.id})" class="text-red-400 text-xs">ลบ</button>
+                        <button onclick='editPromo(${JSON.stringify(p).replace(/'/g, "&#39;")})' class="text-blue-500 bg-blue-50 px-2 py-1 rounded text-xs mr-1">แก้ไข</button>
+                        <button onclick="deletePromo(${p.id})" class="text-red-500 bg-red-50 px-2 py-1 rounded text-xs">ลบ</button>
                     </td>
                 </tr>
             `).join('') || '<tr><td colspan="4" class="text-center py-4 text-[var(--text-secondary)]">ไม่มีโปรโมชั่น</td></tr>';
@@ -1313,11 +1377,11 @@
 
             const listCon = document.getElementById('promo-products-list');
             listCon.innerHTML = filtered.map(p => `
-                <label class="flex items-center gap-2 promo-prod-item p-1 hover:bg-[rgba(255,255,255,0.05)] rounded cursor-pointer" data-name="${p.name.toLowerCase()}">
-                    <input type="checkbox" class="promo-prod-cb" value="${p.id}">
-                    <span class="text-xs truncate">${p.name} (฿${p.price})</span>
+                <label class="flex items-center gap-2 promo-prod-item p-1.5 hover:bg-[var(--surface-2)] rounded-lg cursor-pointer transition" data-name="${p.name.toLowerCase()}">
+                    <input type="checkbox" class="promo-prod-cb accent-[var(--pk)]" value="${p.id}">
+                    <span class="text-xs truncate">${p.name} <span class="text-[var(--text-secondary)]">(฿${p.price})</span></span>
                 </label>
-            `).join('') || '<p class="text-xs text-[var(--text-secondary)]">ไม่มีสินค้าในหมวดนี้</p>';
+            `).join('') || '<p class="text-xs text-[var(--text-secondary)] text-center py-2">ไม่มีสินค้าในหมวดนี้</p>';
         }
 
         function filterPromoProducts() {
@@ -1372,7 +1436,6 @@
             togglePromoSpecifics();
             
             if(p.scope === 'specific' && p.specificProducts) {
-                // Wait a tiny bit for list to render if it was hidden
                 setTimeout(() => {
                     document.querySelectorAll('.promo-prod-cb').forEach(cb => {
                         if(p.specificProducts.includes(cb.value)) cb.checked = true;
@@ -1393,7 +1456,7 @@
             togglePromoSpecifics(); togglePromoValueField();
         }
 
-        // 8.5 Admin Categories (Edit Added)
+        // 8.5 Admin Categories 
         function renderAdminCats() {
             const list = document.getElementById('admin-maincat-list');
             const subParentSel = document.getElementById('subcat-parent');
@@ -1403,22 +1466,22 @@
 
             db.categories.filter(c => c.id !== 'all').forEach(c => {
                 let li = document.createElement('li');
-                li.className = 'border border-[var(--border-color)] rounded-xl p-3 bg-[var(--surface-2)] mb-2';
+                li.className = 'border border-[var(--border-color)] rounded-2xl p-4 bg-[var(--surface-2)] mb-3 shadow-sm';
                 li.innerHTML = `
                     <div class="flex justify-between items-center">
-                        <span class="font-bold text-[var(--pk)]">${c.isFolder ? '📁' : '📦'} ${c.name}</span>
+                        <span class="font-bold text-[var(--text-primary)] text-lg flex items-center gap-2"><span class="text-2xl">${c.isFolder ? '📁' : '📦'}</span> ${c.name}</span>
                         <div>
-                            <button onclick="editMainCat('${c.id}')" class="text-xs text-blue-400 mr-2">แก้</button>
-                            <button onclick="deleteMainCat('${c.id}')" class="text-xs text-red-400">ลบ</button>
+                            <button onclick="editMainCat('${c.id}')" class="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded mr-1 font-bold">แก้</button>
+                            <button onclick="deleteMainCat('${c.id}')" class="text-xs text-red-500 bg-red-50 px-2 py-1 rounded font-bold">ลบ</button>
                         </div>
                     </div>
                 `;
                 if(c.isFolder) {
                     subOptions += `<option value="${c.name}">${c.name}</option>`;
                     if(c.subs.length > 0) {
-                        const subUl = document.createElement('ul'); subUl.className = 'mt-2 pl-4 space-y-1 text-xs text-[var(--text-secondary)] border-l border-[var(--border-color)]';
+                        const subUl = document.createElement('ul'); subUl.className = 'mt-3 pl-4 space-y-2 text-sm text-[var(--text-secondary)] border-l-2 border-[var(--border-color)]';
                         c.subs.forEach(s => {
-                            subUl.innerHTML += `<li class="flex justify-between items-center py-1"><span>- ${s}</span> <div><button onclick="editSubCat('${c.name}', '${s}')" class="text-blue-400 mr-2 opacity-50 hover:opacity-100">แก้</button><button onclick="deleteSubCat('${c.name}', '${s}')" class="text-red-400 opacity-50 hover:opacity-100">ลบ</button></div></li>`;
+                            subUl.innerHTML += `<li class="flex justify-between items-center bg-white p-2 rounded-xl border border-[var(--border-color)] shadow-sm"><span class="font-medium">- ${s}</span> <div><button onclick="editSubCat('${c.name}', '${s}')" class="text-xs text-blue-500 mr-2">แก้</button><button onclick="deleteSubCat('${c.name}', '${s}')" class="text-xs text-red-500">ลบ</button></div></li>`;
                         });
                         li.appendChild(subUl);
                     } else { li.innerHTML += `<p class="mt-2 text-xs text-[var(--text-secondary)] pl-4">ไม่มีหมวดย่อย</p>`; }
@@ -1445,7 +1508,6 @@
                 const finalName = newName.trim();
                 if(db.categories.find(c => c.name === finalName)) return showToast('ชื่อหมวดหมู่ซ้ำ');
                 
-                // Update Products assigned to this category
                 db.products.forEach(p => { if(p.category === cat.name) p.category = finalName; });
                 cat.name = finalName;
                 saveDB(); renderAdminCats(); renderDrawerNav(); showToast('แก้ไขสำเร็จ');
@@ -1470,10 +1532,7 @@
                 const finalSub = newSub.trim();
                 if(cat.subs.includes(finalSub)) return showToast('ชื่อหมวดย่อยซ้ำ');
                 
-                // Update Products
                 db.products.forEach(p => { if(p.category === mainName && p.subCategory === oldSub) p.subCategory = finalSub; });
-                
-                // Update array
                 const idx = cat.subs.indexOf(oldSub);
                 if(idx > -1) cat.subs[idx] = finalSub;
                 
@@ -1497,12 +1556,12 @@
             tbody.innerHTML = db.users.filter(u => u.role !== 'admin').map(u => `
                 <tr>
                     <td class="font-bold">${u.username}</td>
-                    <td class="font-mono text-[var(--pk2)]">${u.credit}฿</td>
+                    <td class="font-mono text-[var(--pk3)] font-bold">${u.credit}฿</td>
                     <td>
                         <div class="flex gap-1">
-                            <input type="number" id="cred-amt-${u.username}" placeholder="จำนวน" class="w-20 !py-1 !px-2 !text-xs">
-                            <button onclick="adjustCredit('${u.username}', 1)" class="bg-green-600 text-white px-2 py-1 rounded text-xs">+</button>
-                            <button onclick="adjustCredit('${u.username}', -1)" class="bg-red-600 text-white px-2 py-1 rounded text-xs">-</button>
+                            <input type="number" id="cred-amt-${u.username}" placeholder="จำนวน" class="w-20 !py-1.5 !px-2 !text-xs shadow-sm">
+                            <button onclick="adjustCredit('${u.username}', 1)" class="bg-green-500 text-white px-3 py-1.5 rounded text-xs font-bold shadow-sm">+</button>
+                            <button onclick="adjustCredit('${u.username}', -1)" class="bg-red-500 text-white px-3 py-1.5 rounded text-xs font-bold shadow-sm">-</button>
                         </div>
                     </td>
                 </tr>
@@ -1515,7 +1574,7 @@
             if(u) { u.credit += (amt * sign); if(u.credit < 0) u.credit = 0; saveDB(); renderAdminUsers(); showToast(`อัปเดตเครดิต ${username} สำเร็จ`); }
         }
 
-        // 8.7 Admin Settings (Profile, Theme, Bank)
+        // 8.7 Admin Settings (Profile, Bank)
         function handleAdminQRUpload(e) {
             const file = e.target.files[0];
             if(!file) return;
@@ -1529,32 +1588,28 @@
             document.getElementById('set-store-name').value = db.storeInfo.name;
             document.getElementById('set-store-desc').value = db.storeInfo.desc;
             document.getElementById('set-store-avatar').value = db.storeInfo.avatar;
-            
-            document.getElementById('set-color-pk').value = db.themeVars.pk;
-            document.getElementById('set-color-pk3').value = db.themeVars.pk3;
 
-            document.getElementById('set-bank-name').value = db.bank.bank;
-            document.getElementById('set-bank-no').value = db.bank.no;
-            document.getElementById('set-bank-acc').value = db.bank.name;
+            document.getElementById('set-bank-ppid').value = db.bank.ppId || '';
+            document.getElementById('set-bank-name').value = db.bank.bank || '';
+            document.getElementById('set-bank-no').value = db.bank.no || '';
+            document.getElementById('set-bank-acc').value = db.bank.name || '';
             document.getElementById('set-bank-qr').value = db.bank.customQr || '';
         }
+        
         function saveStoreInfo() {
             db.storeInfo.name = document.getElementById('set-store-name').value;
             db.storeInfo.desc = document.getElementById('set-store-desc').value;
             db.storeInfo.avatar = document.getElementById('set-store-avatar').value;
             saveDB(); applyStoreInfo(); showToast('บันทึกข้อมูลร้านสำเร็จ');
         }
-        function saveThemeColors() {
-            db.themeVars.pk = document.getElementById('set-color-pk').value;
-            db.themeVars.pk3 = document.getElementById('set-color-pk3').value;
-            saveDB(); applyThemeColors(); showToast('ปรับเปลี่ยนธีมสีแล้ว');
-        }
+        
         function saveBankInfo() {
+            db.bank.ppId = document.getElementById('set-bank-ppid').value;
             db.bank.bank = document.getElementById('set-bank-name').value;
             db.bank.no = document.getElementById('set-bank-no').value;
             db.bank.name = document.getElementById('set-bank-acc').value;
             db.bank.customQr = document.getElementById('set-bank-qr').value.trim();
-            saveDB(); showToast('บันทึกบัญชีรับเงินสำเร็จ');
+            saveDB(); showToast('บันทึกข้อมูลบัญชีรับเงินสำเร็จ');
         }
 
         // Init App
